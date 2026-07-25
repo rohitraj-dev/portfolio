@@ -1,0 +1,48 @@
+const projects = [
+  {
+    id: "examiq",
+    title: "ExamIQ",
+    tagline: "AI-powered exam prep for BCA students",
+    description: "An intelligent exam preparation tool built for BCA students. Uses Claude API to generate practice questions, explain concepts, and simulate exam conditions.",
+    tags: ["React", "Claude API", "Vite", "Tailwind CSS"],
+    status: "Completed",
+    github: "https://github.com/rohitraj-dev",
+    live: null,
+    featured: true,
+  },
+  {
+    id: "ai-meal-planner",
+    title: "AI Meal Planner",
+    tagline: "Genetic algorithm-based nutrition optimizer",
+    description: "A Python + Streamlit app that uses a genetic algorithm to generate optimized weekly meal plans based on dietary goals, nutrition targets, and food preferences.",
+    tags: ["Python", "Streamlit", "Genetic Algorithm", "scikit-learn"],
+    status: "Completed",
+    github: "https://github.com/rohitraj-dev",
+    live: null,
+    featured: true,
+  },
+  {
+    id: "marketpulse",
+    title: "MarketPulse",
+    tagline: "AI stock tracker with LSTM + XGBoost",
+    description: "Real-time stock analysis dashboard using yfinance data, LSTM for time-series prediction, and XGBoost for classification signals. Built for retail investors.",
+    tags: ["Python", "yfinance", "LSTM", "XGBoost", "Streamlit"],
+    status: "In Progress",
+    github: "https://github.com/rohitraj-dev",
+    live: null,
+    featured: true,
+  },
+  {
+    id: "vakalat",
+    title: "Vakalat",
+    tagline: "Legal tech platform for Indian lawyers",
+    description: "A React + FastAPI platform that uses Claude API to help Indian lawyers draft legal documents, summarize case files, and manage client cases efficiently.",
+    tags: ["React", "FastAPI", "Claude API", "Python"],
+    status: "In Progress",
+    github: "https://github.com/rohitraj-dev",
+    live: null,
+    featured: true,
+  },
+];
+
+export default projects;
