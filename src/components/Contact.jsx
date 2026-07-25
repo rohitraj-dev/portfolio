@@ -31,10 +31,10 @@ export default function Contact() {
     setStatus({ type: null, message: '' });
 
     emailjs.sendForm(
-      'YOUR_SERVICE_ID', 
-      'YOUR_TEMPLATE_ID', 
+      'service_b7aivig', 
+      'template_l17vlez', 
       formRef.current, 
-      'YOUR_PUBLIC_KEY'
+      'zW73IJZEv2Nsgd6w4'
     )
       .then(() => {
         setStatus({ type: 'success', message: "Message sent! I'll get back to you soon ✓" });
@@ -114,7 +114,7 @@ export default function Contact() {
               <div>
                 <input
                   type="text"
-                  name="user_name"
+                  name="name"
                   placeholder="Name"
                   required
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-cyan-400/60 transition-colors"
@@ -124,7 +124,7 @@ export default function Contact() {
               <div>
                 <input
                   type="email"
-                  name="user_email"
+                  name="email"
                   placeholder="Email"
                   required
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-cyan-400/60 transition-colors"
