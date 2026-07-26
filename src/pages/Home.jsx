@@ -1,7 +1,5 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
-import About from '../components/About'
-import Skills from '../components/Skills'
 import Contact from '../components/Contact'
 
 function Home() {
@@ -9,8 +7,6 @@ function Home() {
     <main>
       <Navbar />
       <Hero />
-      <About />
-      <Skills />
       <Contact />
       
       <footer className="bg-[#0a0a0f] border-t border-white/10 py-6 text-center">

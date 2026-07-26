@@ -4,7 +4,7 @@ import { LuMenu, LuX } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 
 const navLinks = [
-  { label: 'About', id: 'about' },
+  { label: 'About', path: '/about' },
   { label: 'Skills', id: 'skills' },
   { label: 'Projects', path: '/projects' },
   { label: 'Education', path: '/education' },
