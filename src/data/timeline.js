@@ -5,7 +5,7 @@ const education = [
     duration: "2025–2029",
     location: "Deoghar, Jharkhand",
     description: "Bachelor of Computer Applications. Focusing on software development, computer science fundamentals, and artificial intelligence.",
-    color: "cyan"
+    color: "amber"
   },
   {
     institution: "IIT Madras",
@@ -13,7 +13,7 @@ const education = [
     duration: "2024–2028",
     location: "Chennai (Remote)",
     description: "Prestigious online BS degree in Data Science and Programming. 1st semester completed.",
-    color: "purple"
+    color: "amber"
   },
   {
     institution: "Allen Career Institute, Kota",
@@ -21,7 +21,7 @@ const education = [
     duration: "2022–2024",
     location: "Kota, Rajasthan",
     description: "Intensive preparation for the Joint Entrance Examination (JEE). Built strong analytical and problem-solving skills.",
-    color: "cyan"
+    color: "amber"
   },
   {
     institution: "Naveen Public School",
@@ -29,7 +29,7 @@ const education = [
     duration: "2022–2024",
     location: "Deoghar, Jharkhand",
     description: "Physics, Chemistry, Maths, English, and Physical Education. Developed a core interest in programming.",
-    color: "purple"
+    color: "amber"
   },
   {
     institution: "St. Francis School Jasidih",
@@ -37,7 +37,7 @@ const education = [
     duration: "till 2022",
     location: "Jasidih, Deoghar",
     description: "Completed secondary education under the ICSE board. Established strong foundations in science and mathematics.",
-    color: "cyan"
+    color: "amber"
   }
 ];
 

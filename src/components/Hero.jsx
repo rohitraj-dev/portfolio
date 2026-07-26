@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaXTwitter, FaInstagram, FaArrowDown } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const taglines = [
   'BCA Student at BIT Mesra',
@@ -60,17 +61,14 @@ function Hero() {
   }, [currentText, isDeleting, textIndex]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#0a0a0f]" id="home">
-      {/* Animated Background Blobs */}
-      <motion.div
-        className="absolute bg-cyan-500/10 blur-[120px] rounded-full w-96 h-96 top-20 left-20 pointer-events-none"
-        animate={{ y: [0, -30, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute bg-purple-600/10 blur-[120px] rounded-full w-96 h-96 bottom-20 right-20 pointer-events-none"
-        animate={{ y: [0, -30, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#212529]" id="home">
+      {/* Subtle dot pattern background */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#f8f9fa 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }}
       />
 
       {/* Content */}
@@ -82,20 +80,20 @@ function Hero() {
       >
         <motion.p
           variants={itemVariants}
-          className="text-gray-400 text-sm font-[Space_Grotesk] tracking-widest uppercase mb-2"
+          className="text-[#6c757d] text-sm tracking-widest uppercase mb-2"
         >
           👋 Hello, I&apos;m
         </motion.p>
         
         <motion.h1
           variants={itemVariants}
-          className="text-6xl md:text-7xl font-bold text-white font-[Space_Grotesk] drop-shadow-[0_0_30px_rgba(0,217,255,0.3)] mb-4"
+          className="text-6xl md:text-7xl font-bold text-[#f8f9fa] mb-4"
         >
           Rohit Raj
         </motion.h1>
 
         <motion.div variants={itemVariants} className="h-8 md:h-10 mb-2">
-          <p className="text-cyan-400 text-xl md:text-2xl font-[Space_Grotesk]">
+          <p className="text-amber-400 text-xl md:text-2xl font-semibold">
             {currentText}
             <span className="animate-pulse">|</span>
           </p>
@@ -103,7 +101,7 @@ function Hero() {
 
         <motion.p
           variants={itemVariants}
-          className="text-gray-400 mt-4 text-base md:text-lg"
+          className="text-[#adb5bd] mt-4 text-base md:text-lg"
         >
           Building AI-powered products from Deoghar, Jharkhand 🚀
         </motion.p>
@@ -112,15 +110,17 @@ function Hero() {
           variants={itemVariants}
           className="mt-8 gap-4 flex justify-center flex-wrap"
         >
-          <a
-            href="#projects"
-            className="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg hover:bg-cyan-300 transition-all hover:scale-105"
+          <Link
+            to="/projects"
+            className="bg-amber-400 text-[#212529] font-semibold px-6 py-3 rounded-lg hover:bg-amber-500 transition-all"
           >
             View My Work
-          </a>
+          </Link>
           <a
-            href="/resume.pdf"
-            className="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-lg hover:bg-cyan-400 hover:text-black transition-all hover:scale-105"
+            href="https://assets.rajrohit.tech/resume/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-amber-400 text-amber-400 px-6 py-3 rounded-lg hover:bg-amber-400 hover:text-[#212529] transition-all"
           >
             Download Resume
           </a>
@@ -137,7 +137,7 @@ function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-gray-400 hover:text-cyan-400 transition-colors text-2xl"
+              className="text-[#6c757d] hover:text-amber-400 transition-colors text-2xl"
             >
               <Icon />
             </a>
@@ -152,12 +152,12 @@ function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <span className="text-gray-600 text-xs tracking-widest uppercase">Scroll</span>
+        <span className="text-[#6c757d] text-xs tracking-widest uppercase">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <FaArrowDown className="text-cyan-400" />
+          <FaArrowDown className="text-amber-400" />
         </motion.div>
       </motion.div>
     </section>
