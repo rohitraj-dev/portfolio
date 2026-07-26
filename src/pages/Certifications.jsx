@@ -105,6 +105,12 @@ export default function Certifications() {
                     Credly <ExternalLink size={12} />
                   </a>
                 )}
+                {cert.verifyUrl && (
+                  <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer"
+                    className="flex-1 min-w-[100px] text-center bg-[#5b8fa8]/10 hover:bg-[#5b8fa8]/20 border border-[#5b8fa8]/30 text-[#5b8fa8] text-xs font-medium py-2 px-3 rounded-lg flex justify-center items-center gap-1.5 transition-colors">
+                    Verify <ExternalLink size={12} />
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}

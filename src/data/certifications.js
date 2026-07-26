@@ -162,9 +162,10 @@ export const certifications = [
     id: "sap-aero",
     name: "Introducing the Aerospace & Defense Industry",
     issuer: "SAP",
-    badgeUrl: "https://assets.rajrohit.tech/badges/badge.png", // using "badge.png" as placeholder or could be another name. Wait, the prompt says: "Introducing the Aerospace & Defense Industry (badge only, no cert PDF, no credly link)" - doesn't specify filename. I'll just use "sap-aero.png" or ask. Wait, let me check if there's a specific filename. Let's use sap.png or just sap-badge.png. The prompt didn't specify. I'll use "sap.png".
-    certUrl: null,
-    credlyUrl: null
+    badgeUrl: "https://assets.rajrohit.tech/badges/sap-aero.png",
+    certUrl: "https://assets.rajrohit.tech/certificates/sap_aero.pdf",
+    credlyUrl: null,
+    verifyUrl: "https://badger.learning.sap.com/verify/xeguf-gucef-perus-sycar-sigyn"
   },
 
   // CS50 (1)
