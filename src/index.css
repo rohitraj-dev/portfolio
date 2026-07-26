@@ -8,7 +8,7 @@
   --color-text: #f8f9fa;
   --color-text-secondary: #adb5bd;
   --color-text-muted: #6c757d;
-  --color-accent: #f59e0b;
+  --color-accent: #5b8fa8;
 }
 
 html {
@@ -24,7 +24,7 @@ body {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #f59e0b #212529;
+  scrollbar-color: #5b8fa8 #212529;
 }
 
 *::-webkit-scrollbar {
@@ -36,6 +36,6 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #f59e0b;
+  background: #5b8fa8;
   border-radius: 3px;
 }

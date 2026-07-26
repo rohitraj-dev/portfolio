@@ -9,7 +9,7 @@ export default function Education() {
       <div className="max-w-6xl mx-auto">
         
         <div className="mb-20">
-          <Link to="/" className="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-2 mb-8 font-medium inline-flex">
+          <Link to="/" className="text-[#5b8fa8] hover:text-[#5b8fa8] transition-colors flex items-center gap-2 mb-8 font-medium inline-flex">
             <ArrowLeft size={16} /> Back to Home
           </Link>
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center md:text-left">
@@ -25,7 +25,7 @@ export default function Education() {
             const isEven = index % 2 === 0;
             return (
               <div key={index} className={`relative flex flex-col md:flex-row w-full mb-16 ${isEven ? 'md:justify-start' : 'md:justify-end'}`}>
-                <div className="absolute left-6 md:left-1/2 top-8 w-5 h-5 rounded-full border-4 border-[#212529] bg-amber-400 md:-translate-x-1/2 z-10 -translate-x-1/2"></div>
+                <div className="absolute left-6 md:left-1/2 top-8 w-5 h-5 rounded-full border-4 border-[#212529] bg-[#5b8fa8] md:-translate-x-1/2 z-10 -translate-x-1/2"></div>
                 <motion.div
                   initial={{ opacity: 0, x: isEven ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -33,20 +33,20 @@ export default function Education() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="w-full md:w-[45%] pl-16 md:pl-0"
                 >
-                  <div className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 md:p-8 hover:border-amber-400/60 transition-all duration-300">
+                  <div className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 md:p-8 hover:border-[#5b8fa8]/60 transition-all duration-300">
                     <div className="mb-4">
-                      <span className="inline-block bg-amber-400/10 border border-amber-400/30 text-amber-400 text-xs font-bold px-3 py-1 rounded-full mb-3">
+                      <span className="inline-block bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-xs font-bold px-3 py-1 rounded-full mb-3">
                         {item.degree}
                       </span>
                       <h3 className="text-2xl font-bold text-[#f8f9fa] leading-tight">{item.institution}</h3>
                     </div>
                     <div className="flex flex-wrap gap-4 text-sm text-[#6c757d] mb-4 font-medium">
                       <div className="flex items-center gap-1.5">
-                        <Calendar size={14} className="text-amber-400" />
+                        <Calendar size={14} className="text-[#5b8fa8]" />
                         {item.duration}
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <MapPin size={14} className="text-amber-400" />
+                        <MapPin size={14} className="text-[#5b8fa8]" />
                         {item.location}
                       </div>
                     </div>

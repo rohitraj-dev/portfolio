@@ -7,7 +7,7 @@ export default function Timeline() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-[#f8f9fa] mb-3">Journey</h2>
-          <div className="w-20 h-1 bg-amber-400 rounded-full mx-auto mb-4"></div>
+          <div className="w-20 h-1 bg-[#5b8fa8] rounded-full mx-auto mb-4"></div>
           <p className="text-[#adb5bd] text-lg">Education & milestones</p>
         </div>
 
@@ -18,7 +18,7 @@ export default function Timeline() {
             const isEven = index % 2 === 0;
             return (
               <div key={index} className={`relative flex w-full mb-10 ${isEven ? 'md:justify-start' : 'md:justify-end'} pl-10 md:pl-0`}>
-                <div className="absolute left-2 md:left-1/2 top-6 w-4 h-4 rounded-full border-4 border-[#212529] -translate-x-1/2 md:-translate-x-1/2 z-10 bg-amber-400"></div>
+                <div className="absolute left-2 md:left-1/2 top-6 w-4 h-4 rounded-full border-4 border-[#212529] -translate-x-1/2 md:-translate-x-1/2 z-10 bg-[#5b8fa8]"></div>
                 <motion.div
                   initial={{ opacity: 0, x: isEven ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -26,7 +26,7 @@ export default function Timeline() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="w-full md:w-[45%] bg-[#343a40] border border-[#495057] rounded-2xl p-5"
                 >
-                  <div className="bg-amber-400/10 text-amber-400 text-xs px-3 py-1 rounded-full w-fit mb-3 font-medium border border-amber-400/30">
+                  <div className="bg-[#5b8fa8]/10 text-[#5b8fa8] text-xs px-3 py-1 rounded-full w-fit mb-3 font-medium border border-[#5b8fa8]/30">
                     {item.duration}
                   </div>
                   <h3 className="text-[#f8f9fa] font-semibold text-base leading-snug">{item.institution}</h3>

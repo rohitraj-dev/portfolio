@@ -93,7 +93,7 @@ function Hero() {
         </motion.h1>
 
         <motion.div variants={itemVariants} className="h-8 md:h-10 mb-2">
-          <p className="text-amber-400 text-xl md:text-2xl font-semibold">
+          <p className="text-[#5b8fa8] text-xl md:text-2xl font-semibold">
             {currentText}
             <span className="animate-pulse">|</span>
           </p>
@@ -112,7 +112,7 @@ function Hero() {
         >
           <Link
             to="/projects"
-            className="bg-amber-400 text-[#212529] font-semibold px-6 py-3 rounded-lg hover:bg-amber-500 transition-all"
+            className="bg-[#5b8fa8] text-[#212529] font-semibold px-6 py-3 rounded-lg hover:bg-[#5b8fa8] transition-all"
           >
             View My Work
           </Link>
@@ -120,7 +120,7 @@ function Hero() {
             href="https://assets.rajrohit.tech/resume/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-amber-400 text-amber-400 px-6 py-3 rounded-lg hover:bg-amber-400 hover:text-[#212529] transition-all"
+            className="border border-[#5b8fa8] text-[#5b8fa8] px-6 py-3 rounded-lg hover:bg-[#5b8fa8] hover:text-[#212529] transition-all"
           >
             Download Resume
           </a>
@@ -137,7 +137,7 @@ function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-[#6c757d] hover:text-amber-400 transition-colors text-2xl"
+              className="text-[#6c757d] hover:text-[#5b8fa8] transition-colors text-2xl"
             >
               <Icon />
             </a>
@@ -157,7 +157,7 @@ function Hero() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <FaArrowDown className="text-amber-400" />
+          <FaArrowDown className="text-[#5b8fa8]" />
         </motion.div>
       </motion.div>
     </section>

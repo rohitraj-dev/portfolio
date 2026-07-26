@@ -20,7 +20,7 @@ export default function AllProjects() {
       <div className="max-w-7xl mx-auto">
         
         <div className="mb-16">
-          <Link to="/" className="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-2 mb-8 font-medium inline-flex">
+          <Link to="/" className="text-[#5b8fa8] hover:text-[#5b8fa8] transition-colors flex items-center gap-2 mb-8 font-medium inline-flex">
             <ArrowLeft size={16} /> Back to Home
           </Link>
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center md:text-left">
@@ -38,8 +38,8 @@ export default function AllProjects() {
               <button key={tab} onClick={() => setActiveTab(tab)}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 border ${
                   isActive
-                    ? 'bg-amber-400 text-[#212529] border-amber-400'
-                    : 'bg-[#343a40] border-[#495057] text-[#adb5bd] hover:border-amber-400/60 hover:text-[#f8f9fa]'
+                    ? 'bg-[#5b8fa8] text-[#212529] border-[#5b8fa8]'
+                    : 'bg-[#343a40] border-[#495057] text-[#adb5bd] hover:border-[#5b8fa8]/60 hover:text-[#f8f9fa]'
                 }`}>
                 {tab}
                 <span className={`text-xs px-2 py-0.5 rounded-full ${isActive ? 'bg-[#212529]/20 text-[#212529]' : 'bg-[#495057] text-[#adb5bd]'}`}>
@@ -61,7 +61,7 @@ export default function AllProjects() {
                 } else if (project.status === "In Progress") {
                   badgeClass = "bg-yellow-500/10 text-yellow-400 border-yellow-500/30";
                 } else if (project.status === "Proposed") {
-                  badgeClass = "bg-amber-400/10 text-amber-400 border-amber-400/30";
+                  badgeClass = "bg-[#5b8fa8]/10 text-[#5b8fa8] border-[#5b8fa8]/30";
                 }
 
                 return (
@@ -70,7 +70,7 @@ export default function AllProjects() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex flex-col bg-[#343a40] border border-[#495057] rounded-2xl overflow-hidden hover:border-amber-400/60 transition-all duration-300"
+                    className="flex flex-col bg-[#343a40] border border-[#495057] rounded-2xl overflow-hidden hover:border-[#5b8fa8]/60 transition-all duration-300"
                   >
                     <div className="p-6 flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">
@@ -84,7 +84,7 @@ export default function AllProjects() {
                       
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.tags.slice(0, 4).map((tag, idx) => (
-                          <span key={idx} className="bg-amber-400/10 border border-amber-400/30 text-amber-400 text-xs rounded-full px-2.5 py-1">{tag}</span>
+                          <span key={idx} className="bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-xs rounded-full px-2.5 py-1">{tag}</span>
                         ))}
                         {project.tags.length > 4 && (
                           <span className="bg-[#495057] text-[#6c757d] text-xs rounded-full px-2.5 py-1">+{project.tags.length - 4}</span>
@@ -93,18 +93,18 @@ export default function AllProjects() {
                       
                       <div className="flex items-center gap-3 mt-auto pt-4 border-t border-[#495057]">
                         <Link to={`/projects/${project.id}`}
-                          className="flex-1 text-center bg-[#495057] hover:bg-amber-400 hover:text-[#212529] text-[#f8f9fa] text-sm font-medium py-2 px-4 rounded-xl transition-colors">
+                          className="flex-1 text-center bg-[#495057] hover:bg-[#5b8fa8] hover:text-[#212529] text-[#f8f9fa] text-sm font-medium py-2 px-4 rounded-xl transition-colors">
                           Details
                         </Link>
                         {project.github && (
                           <a href={project.github} target="_blank" rel="noopener noreferrer"
-                            className="p-2 bg-[#495057] hover:bg-amber-400 hover:text-[#212529] text-[#f8f9fa] rounded-xl transition-colors">
+                            className="p-2 bg-[#495057] hover:bg-[#5b8fa8] hover:text-[#212529] text-[#f8f9fa] rounded-xl transition-colors">
                             <FaGithub size={18} />
                           </a>
                         )}
                         {project.live && (
                           <a href={project.live} target="_blank" rel="noopener noreferrer"
-                            className="p-2 bg-amber-400/10 hover:bg-amber-400 hover:text-[#212529] border border-amber-400/30 text-amber-400 rounded-xl transition-colors">
+                            className="p-2 bg-[#5b8fa8]/10 hover:bg-[#5b8fa8] hover:text-[#212529] border border-[#5b8fa8]/30 text-[#5b8fa8] rounded-xl transition-colors">
                             <ExternalLink size={18} />
                           </a>
                         )}

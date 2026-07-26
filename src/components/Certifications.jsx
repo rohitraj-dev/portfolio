@@ -28,18 +28,18 @@ export default function Certifications() {
         <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"} className="flex flex-col items-center">
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-4xl font-bold text-[#f8f9fa] mb-3">Certifications</h2>
-            <div className="w-20 h-1 bg-amber-400 rounded-full mx-auto mb-4"></div>
+            <div className="w-20 h-1 bg-[#5b8fa8] rounded-full mx-auto mb-4"></div>
             <p className="text-[#adb5bd] text-lg">Verified credentials & courses</p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full">
             {certifications.map((cert, index) => (
               <motion.div key={index} variants={itemVariants}
-                className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 hover:border-amber-400/60 transition-all duration-300 flex flex-col">
+                className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 hover:border-[#5b8fa8]/60 transition-all duration-300 flex flex-col">
                 <div className="text-4xl mb-4">{cert.icon}</div>
                 <h3 className="text-[#f8f9fa] font-semibold text-base leading-snug flex-grow">{cert.title}</h3>
                 <div className="flex items-center gap-2 mt-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#5b8fa8]"></div>
                   <p className="text-[#6c757d] text-sm">{cert.issuer}</p>
                 </div>
                 <div className="mt-5">

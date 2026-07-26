@@ -23,7 +23,7 @@ export default function Projects() {
         <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"} className="flex flex-col items-center">
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-4xl font-bold text-[#f8f9fa] mb-3">Projects</h2>
-            <div className="w-20 h-1 bg-amber-400 rounded-full mx-auto mb-4"></div>
+            <div className="w-20 h-1 bg-[#5b8fa8] rounded-full mx-auto mb-4"></div>
             <p className="text-[#adb5bd] text-lg">Things I've built (and am still building)</p>
           </motion.div>
 

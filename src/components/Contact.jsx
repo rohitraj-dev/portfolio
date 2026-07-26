@@ -51,7 +51,7 @@ export default function Contact() {
           <div className="flex flex-col">
             <motion.div variants={itemVariants} className="mb-8 text-center lg:text-left">
               <h2 className="text-4xl font-bold text-[#f8f9fa] mb-3">Get In Touch</h2>
-              <div className="w-20 h-1 bg-amber-400 rounded-full mx-auto lg:mx-0"></div>
+              <div className="w-20 h-1 bg-[#5b8fa8] rounded-full mx-auto lg:mx-0"></div>
             </motion.div>
 
             <motion.p variants={itemVariants} className="text-[#adb5bd] text-lg leading-relaxed mb-10 text-center lg:text-left">
@@ -61,7 +61,7 @@ export default function Contact() {
             <motion.div variants={itemVariants} className="flex flex-col gap-5 mb-12">
               <div className="flex items-center gap-4 text-[#adb5bd] justify-center lg:justify-start">
                 <span className="text-xl">📧</span>
-                <a href="mailto:mail.rohitraj@icloud.com" className="hover:text-amber-400 font-medium transition-colors">
+                <a href="mailto:mail.rohitraj@icloud.com" className="hover:text-[#5b8fa8] font-medium transition-colors">
                   mail.rohitraj@icloud.com
                 </a>
               </div>
@@ -74,7 +74,7 @@ export default function Contact() {
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center lg:justify-start">
               {socialLinks.map((social) => (
                 <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}
-                  className="flex items-center gap-2 bg-[#343a40] border border-[#495057] hover:border-amber-400/60 text-[#adb5bd] hover:text-amber-400 px-4 py-2.5 rounded-full transition-all duration-300">
+                  className="flex items-center gap-2 bg-[#343a40] border border-[#495057] hover:border-[#5b8fa8]/60 text-[#adb5bd] hover:text-[#5b8fa8] px-4 py-2.5 rounded-full transition-all duration-300">
                   <social.icon className="text-lg" />
                   <span className="text-sm font-medium">{social.label}</span>
                 </a>
@@ -86,18 +86,18 @@ export default function Contact() {
             <form ref={formRef} onSubmit={sendEmail} className="flex flex-col gap-5">
               <div>
                 <input type="text" name="name" placeholder="Name" required
-                  className="w-full bg-[#495057] border border-[#495057] rounded-xl px-4 py-3.5 text-[#f8f9fa] placeholder-[#6c757d] focus:outline-none focus:border-amber-400 transition-colors" />
+                  className="w-full bg-[#495057] border border-[#495057] rounded-xl px-4 py-3.5 text-[#f8f9fa] placeholder-[#6c757d] focus:outline-none focus:border-[#5b8fa8] transition-colors" />
               </div>
               <div>
                 <input type="email" name="email" placeholder="Email" required
-                  className="w-full bg-[#495057] border border-[#495057] rounded-xl px-4 py-3.5 text-[#f8f9fa] placeholder-[#6c757d] focus:outline-none focus:border-amber-400 transition-colors" />
+                  className="w-full bg-[#495057] border border-[#495057] rounded-xl px-4 py-3.5 text-[#f8f9fa] placeholder-[#6c757d] focus:outline-none focus:border-[#5b8fa8] transition-colors" />
               </div>
               <div>
                 <textarea name="message" placeholder="Message" rows={5} required
-                  className="w-full bg-[#495057] border border-[#495057] rounded-xl px-4 py-3.5 text-[#f8f9fa] placeholder-[#6c757d] focus:outline-none focus:border-amber-400 transition-colors resize-none"></textarea>
+                  className="w-full bg-[#495057] border border-[#495057] rounded-xl px-4 py-3.5 text-[#f8f9fa] placeholder-[#6c757d] focus:outline-none focus:border-[#5b8fa8] transition-colors resize-none"></textarea>
               </div>
               <button type="submit" disabled={isSubmitting}
-                className="w-full bg-amber-400 text-[#212529] font-semibold rounded-xl py-3.5 mt-2 hover:bg-amber-500 transition-colors disabled:opacity-50">
+                className="w-full bg-[#5b8fa8] text-[#212529] font-semibold rounded-xl py-3.5 mt-2 hover:bg-[#5b8fa8] transition-colors disabled:opacity-50">
                 {isSubmitting ? 'Sending...' : 'Send Message →'}
               </button>
               {status.message && (

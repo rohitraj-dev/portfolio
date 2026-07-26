@@ -44,7 +44,7 @@ function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           to="/"
-          className="font-bold text-2xl text-amber-400 transition-opacity hover:opacity-80"
+          className="font-bold text-2xl text-[#5b8fa8] transition-opacity hover:opacity-80"
         >
           RR
         </Link>
@@ -58,7 +58,7 @@ function Navbar() {
                   <Link
                     to="/#contact"
                     onClick={handleContactClick}
-                    className="text-sm font-medium text-[#adb5bd] hover:text-amber-400 transition-colors duration-300"
+                    className="text-sm font-medium text-[#adb5bd] hover:text-[#5b8fa8] transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -71,8 +71,8 @@ function Navbar() {
                   to={link.path}
                   className={`text-sm font-medium transition-colors duration-300 ${
                     active
-                      ? 'text-amber-400 border-b-2 border-amber-400 pb-1'
-                      : 'text-[#adb5bd] hover:text-amber-400'
+                      ? 'text-[#5b8fa8] border-b-2 border-[#5b8fa8] pb-1'
+                      : 'text-[#adb5bd] hover:text-[#5b8fa8]'
                   }`}
                 >
                   {link.label}
@@ -87,7 +87,7 @@ function Navbar() {
             href="https://assets.rajrohit.tech/resume/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-amber-400 text-amber-400 px-4 py-2 rounded-lg hover:bg-amber-400 hover:text-[#212529] transition-all text-sm font-semibold"
+            className="border border-[#5b8fa8] text-[#5b8fa8] px-4 py-2 rounded-lg hover:bg-[#5b8fa8] hover:text-[#212529] transition-all text-sm font-semibold"
           >
             Resume
           </a>
@@ -95,7 +95,7 @@ function Navbar() {
 
         <button
           type="button"
-          className="md:hidden text-amber-400"
+          className="md:hidden text-[#5b8fa8]"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((open) => !open)}
@@ -122,7 +122,7 @@ function Navbar() {
                       <Link
                         to="/#contact"
                         onClick={handleContactClick}
-                        className="block rounded-md px-4 py-3 text-base font-medium text-[#adb5bd] hover:bg-[#343a40] hover:text-amber-400 transition-colors duration-300"
+                        className="block rounded-md px-4 py-3 text-base font-medium text-[#adb5bd] hover:bg-[#343a40] hover:text-[#5b8fa8] transition-colors duration-300"
                       >
                         {link.label}
                       </Link>
@@ -136,8 +136,8 @@ function Navbar() {
                       onClick={() => setMobileOpen(false)}
                       className={`block rounded-md px-4 py-3 text-base font-medium transition-colors duration-300 ${
                         active
-                          ? 'bg-amber-400/10 text-amber-400'
-                          : 'text-[#adb5bd] hover:bg-[#343a40] hover:text-amber-400'
+                          ? 'bg-[#5b8fa8]/10 text-[#5b8fa8]'
+                          : 'text-[#adb5bd] hover:bg-[#343a40] hover:text-[#5b8fa8]'
                       }`}
                     >
                       {link.label}
@@ -150,7 +150,7 @@ function Navbar() {
                   href="https://assets.rajrohit.tech/resume/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center rounded-md border border-amber-400 px-5 py-3 text-sm font-semibold text-amber-400 transition-all duration-300 hover:bg-amber-400 hover:text-[#212529]"
+                  className="block text-center rounded-md border border-[#5b8fa8] px-5 py-3 text-sm font-semibold text-[#5b8fa8] transition-all duration-300 hover:bg-[#5b8fa8] hover:text-[#212529]"
                 >
                   Resume
                 </a>

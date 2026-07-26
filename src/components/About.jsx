@@ -49,7 +49,7 @@ export default function About() {
             <div className="lg:col-span-5 flex flex-col items-center text-center">
               <motion.div 
                 variants={itemVariants}
-                className="w-[180px] h-[180px] rounded-full ring-2 ring-amber-400 bg-[#495057] flex items-center justify-center mb-6"
+                className="w-[180px] h-[180px] rounded-full ring-2 ring-[#5b8fa8] bg-[#495057] flex items-center justify-center mb-6"
               >
                 <span className="text-5xl font-bold text-[#f8f9fa]">RR</span>
               </motion.div>
@@ -58,7 +58,7 @@ export default function About() {
                 Rohit Raj
               </motion.h3>
               
-              <motion.p variants={itemVariants} className="text-amber-400 mb-6 font-medium">
+              <motion.p variants={itemVariants} className="text-[#5b8fa8] mb-6 font-medium">
                 Developer & AI Enthusiast
               </motion.p>
               
@@ -70,7 +70,7 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="text-[#6c757d] hover:text-amber-400 transition-colors text-2xl"
+                    className="text-[#6c757d] hover:text-[#5b8fa8] transition-colors text-2xl"
                   >
                     <social.icon />
                   </a>
@@ -82,7 +82,7 @@ export default function About() {
             <div className="lg:col-span-7 flex flex-col">
               <motion.div variants={itemVariants} className="mb-6 lg:mb-8 text-center lg:text-left">
                 <h2 className="text-4xl font-bold text-[#f8f9fa] mb-3">About Me</h2>
-                <div className="w-20 h-1 bg-amber-400 rounded-full mx-auto lg:mx-0"></div>
+                <div className="w-20 h-1 bg-[#5b8fa8] rounded-full mx-auto lg:mx-0"></div>
               </motion.div>
 
               <motion.p 
@@ -96,7 +96,7 @@ export default function About() {
                 {funFacts.map((fact, index) => (
                   <div 
                     key={index} 
-                    className="bg-[#495057] border border-[#495057] rounded-xl p-4 hover:border-amber-400/60 transition-all duration-300 group"
+                    className="bg-[#495057] border border-[#495057] rounded-xl p-4 hover:border-[#5b8fa8]/60 transition-all duration-300 group"
                   >
                     <p className="text-[#adb5bd] text-sm md:text-base font-medium group-hover:text-[#f8f9fa] transition-colors">
                       {fact}

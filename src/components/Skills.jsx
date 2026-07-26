@@ -22,7 +22,7 @@ export default function Skills() {
         <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"} className="flex flex-col items-center">
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-4xl font-bold text-[#f8f9fa] mb-3">Skills</h2>
-            <div className="w-16 h-1 bg-amber-400 rounded-full mx-auto mb-4"></div>
+            <div className="w-16 h-1 bg-[#5b8fa8] rounded-full mx-auto mb-4"></div>
             <p className="text-[#adb5bd] text-lg">Technologies & tools I work with</p>
           </motion.div>
 
@@ -30,9 +30,9 @@ export default function Skills() {
             {skillsData.map((categoryObj, idx) => {
               const Icon = categoryObj.categoryIcon;
               return (
-                <motion.div key={idx} variants={itemVariants} className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 hover:border-amber-400/60 transition-colors duration-300">
+                <motion.div key={idx} variants={itemVariants} className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 hover:border-[#5b8fa8]/60 transition-colors duration-300">
                   <div className="flex items-center gap-3 mb-6">
-                    <Icon className="text-amber-400 text-2xl" />
+                    <Icon className="text-[#5b8fa8] text-2xl" />
                     <h3 className="text-xl font-bold text-[#f8f9fa]">{categoryObj.category}</h3>
                   </div>
                   <div className="flex flex-wrap gap-3">
@@ -55,7 +55,7 @@ export default function Skills() {
             <h3 className="text-2xl font-bold text-[#f8f9fa] mb-6">Currently Learning</h3>
             <div className="flex flex-wrap justify-center gap-4">
               {learningSkills.map((skill, idx) => (
-                <div key={idx} className="bg-amber-400/10 border border-amber-400/30 text-amber-400 text-sm md:text-base font-medium rounded-full px-5 py-2 hover:bg-amber-400/20 transition-colors duration-300 cursor-default">
+                <div key={idx} className="bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-sm md:text-base font-medium rounded-full px-5 py-2 hover:bg-[#5b8fa8]/20 transition-colors duration-300 cursor-default">
                   {skill.name}
                 </div>
               ))}

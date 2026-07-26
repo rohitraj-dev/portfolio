@@ -12,7 +12,7 @@ export default function ProjectDetail() {
     return (
       <div className="min-h-screen bg-[#212529] flex flex-col items-center justify-center text-[#f8f9fa] px-6 text-center">
         <h1 className="text-3xl font-bold mb-4">Project not found</h1>
-        <Link to="/projects" className="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-2 font-medium">
+        <Link to="/projects" className="text-[#5b8fa8] hover:text-[#5b8fa8] transition-colors flex items-center gap-2 font-medium">
           <ArrowLeft size={16} /> Back to Projects
         </Link>
       </div>
@@ -26,7 +26,7 @@ export default function ProjectDetail() {
       className="min-h-screen bg-[#212529] text-[#f8f9fa] py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
-          <Link to="/projects" className="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-2 mb-8 font-medium inline-flex">
+          <Link to="/projects" className="text-[#5b8fa8] hover:text-[#5b8fa8] transition-colors flex items-center gap-2 mb-8 font-medium inline-flex">
             <ArrowLeft size={16} /> Back to Projects
           </Link>
           
@@ -41,7 +41,7 @@ export default function ProjectDetail() {
             </span>
           </div>
 
-          <p className="text-amber-400 text-lg md:text-xl font-medium mb-6">{project.tagline}</p>
+          <p className="text-[#5b8fa8] text-lg md:text-xl font-medium mb-6">{project.tagline}</p>
 
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag, idx) => (
@@ -52,15 +52,15 @@ export default function ProjectDetail() {
 
         <div className="flex flex-col gap-6 mb-12">
           <div className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 md:p-8">
-            <h2 className="text-amber-400 font-semibold text-xl mb-3">Overview</h2>
+            <h2 className="text-[#5b8fa8] font-semibold text-xl mb-3">Overview</h2>
             <p className="text-[#adb5bd] leading-relaxed text-base md:text-lg">{project.description}</p>
           </div>
 
           <div className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 md:p-8">
-            <h2 className="text-amber-400 font-semibold text-xl mb-4">Tech Stack</h2>
+            <h2 className="text-[#5b8fa8] font-semibold text-xl mb-4">Tech Stack</h2>
             <div className="flex flex-wrap gap-3">
               {project.tags.map((tag, idx) => (
-                <span key={idx} className="bg-amber-400/10 border border-amber-400/30 text-amber-400 text-sm font-medium rounded-full px-4 py-2">{tag}</span>
+                <span key={idx} className="bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-sm font-medium rounded-full px-4 py-2">{tag}</span>
               ))}
             </div>
           </div>
@@ -69,13 +69,13 @@ export default function ProjectDetail() {
         <div className="flex flex-wrap gap-4">
           {project.github && (
             <a href={project.github} target="_blank" rel="noopener noreferrer"
-              className="border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-[#212529] rounded-xl px-6 py-3 flex items-center gap-2 font-medium transition-colors duration-300">
+              className="border border-[#5b8fa8] text-[#5b8fa8] hover:bg-[#5b8fa8] hover:text-[#212529] rounded-xl px-6 py-3 flex items-center gap-2 font-medium transition-colors duration-300">
               <FaGithub size={20} /> GitHub
             </a>
           )}
           {project.live && (
             <a href={project.live} target="_blank" rel="noopener noreferrer"
-              className="border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-[#212529] rounded-xl px-6 py-3 flex items-center gap-2 font-medium transition-colors duration-300">
+              className="border border-[#5b8fa8] text-[#5b8fa8] hover:bg-[#5b8fa8] hover:text-[#212529] rounded-xl px-6 py-3 flex items-center gap-2 font-medium transition-colors duration-300">
               <ExternalLink size={20} /> Live Demo
             </a>
           )}

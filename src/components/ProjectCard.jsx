@@ -9,7 +9,7 @@ export default function ProjectCard({ project, itemVariants }) {
   return (
     <motion.div 
       variants={itemVariants}
-      className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 hover:border-amber-400/60 transition-all duration-300 flex flex-col h-full"
+      className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 hover:border-[#5b8fa8]/60 transition-all duration-300 flex flex-col h-full"
     >
       <div className="flex justify-between items-start mb-2 gap-4">
         <h3 className="text-[#f8f9fa] font-bold text-xl">{project.title}</h3>
@@ -22,7 +22,7 @@ export default function ProjectCard({ project, itemVariants }) {
         </span>
       </div>
       
-      <p className="text-amber-400 text-sm mt-1 font-medium">{project.tagline}</p>
+      <p className="text-[#5b8fa8] text-sm mt-1 font-medium">{project.tagline}</p>
       
       <p className="text-[#adb5bd] text-sm mt-3 flex-grow leading-relaxed">
         {project.description}
@@ -39,18 +39,18 @@ export default function ProjectCard({ project, itemVariants }) {
       <div className="mt-6 flex flex-wrap gap-3 items-center">
         {project.github && (
           <a href={project.github} target="_blank" rel="noopener noreferrer"
-            className="border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-[#212529] rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition-colors font-medium">
+            className="border border-[#5b8fa8] text-[#5b8fa8] hover:bg-[#5b8fa8] hover:text-[#212529] rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition-colors font-medium">
             <FaGithub size={16} /> GitHub
           </a>
         )}
         {project.live && (
           <a href={project.live} target="_blank" rel="noopener noreferrer"
-            className="border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-[#212529] rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition-colors font-medium">
+            className="border border-[#5b8fa8] text-[#5b8fa8] hover:bg-[#5b8fa8] hover:text-[#212529] rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition-colors font-medium">
             <ExternalLink size={16} /> Live Demo
           </a>
         )}
         <Link to={`/projects/${project.id}`}
-          className="ml-auto text-[#6c757d] hover:text-amber-400 text-sm flex items-center gap-1.5 transition-colors font-medium">
+          className="ml-auto text-[#6c757d] hover:text-[#5b8fa8] text-sm flex items-center gap-1.5 transition-colors font-medium">
           View Details <ArrowRight size={16} />
         </Link>
       </div>
