@@ -1,46 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LuMenu, LuX } from 'react-icons/lu';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
+  { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Skills', id: 'skills' },
   { label: 'Projects', path: '/projects' },
   { label: 'Education', path: '/education' },
   { label: 'Certifications', path: '/certifications' },
-  { label: 'Contact', id: 'contact' },
+  { label: 'Contact', path: '/', hash: '#contact' },
 ];
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      {
-        rootMargin: '-40% 0px -45% 0px',
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      }
-    );
-
-    const elements = navLinks
-      .map((link) => document.getElementById(link.id))
-      .filter(Boolean);
-    
-    elements.forEach((el) => observer.observe(el));
-    
-    return () => observer.disconnect();
-  }, []);
+  const location = useLocation();
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
@@ -49,14 +23,18 @@ function Navbar() {
     };
   }, [mobileOpen]);
 
-  const handleNavClick = (e, id) => {
+  const isActive = (link) => {
+    if (link.hash) return false;
+    return location.pathname === link.path;
+  };
+
+  const handleContactClick = () => {
     setMobileOpen(false);
-    
-    const element = document.getElementById(id);
-    if (element) {
-      e.preventDefault();
-      element.scrollIntoView({ behavior: 'smooth' });
-      window.history.pushState(null, '', `#${id}`);
+    if (location.pathname === '/') {
+      const el = document.getElementById('contact');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -68,51 +46,62 @@ function Navbar() {
       className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#0a0a0f]/80 border-b border-white/10"
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a
-          href="#home"
-          onClick={(e) => handleNavClick(e, 'home')}
+        <Link
+          to="/"
           className="font-bold text-2xl text-cyan-400 font-[Space_Grotesk] drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-opacity hover:opacity-80"
         >
-          RK
-        </a>
+          RR
+        </Link>
 
+        {/* Desktop Nav */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.id || link.path}>
-              {link.path ? (
+          {navLinks.map((link) => {
+            const active = isActive(link);
+
+            if (link.hash) {
+              return (
+                <li key={link.label}>
+                  <Link
+                    to="/#contact"
+                    onClick={handleContactClick}
+                    className="text-sm font-medium text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            }
+
+            return (
+              <li key={link.label}>
                 <Link
                   to={link.path}
-                  className="text-sm font-medium text-gray-300 hover:text-cyan-400 transition-colors duration-300"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  href={`#${link.id}`}
-                  onClick={(e) => handleNavClick(e, link.id)}
                   className={`text-sm font-medium transition-colors duration-300 ${
-                    activeSection === link.id
-                      ? 'text-cyan-400'
+                    active
+                      ? 'text-cyan-400 underline underline-offset-4 decoration-cyan-400'
                       : 'text-gray-300 hover:text-cyan-400'
                   }`}
                 >
                   {link.label}
-                </a>
-              )}
-            </li>
-          ))}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
+        {/* Resume Button (Desktop) */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, 'contact')}
+            href="https://assets.rajrohit.tech/resume/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="border border-cyan-400 text-cyan-400 px-4 py-2 rounded-lg hover:bg-cyan-400 hover:text-black transition-all text-sm font-semibold"
           >
-            Hire Me
+            Resume
           </a>
         </div>
 
+        {/* Mobile Hamburger */}
         <button
           type="button"
           className="md:hidden flex flex-col justify-center gap-1.5 text-cyan-400"
@@ -124,6 +113,7 @@ function Navbar() {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -134,37 +124,47 @@ function Navbar() {
             className="overflow-hidden md:hidden bg-black/95 backdrop-blur-lg border-t border-cyan-400/20"
           >
             <ul className="flex flex-col gap-1 px-6 py-4">
-              {navLinks.map((link) => (
-                <li key={link.id || link.path}>
-                  {link.path ? (
+              {navLinks.map((link) => {
+                const active = isActive(link);
+
+                if (link.hash) {
+                  return (
+                    <li key={link.label}>
+                      <Link
+                        to="/#contact"
+                        onClick={handleContactClick}
+                        className="block rounded-md px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-cyan-400 transition-colors duration-300"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={link.label}>
                     <Link
                       to={link.path}
-                      className="block rounded-md px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-cyan-400 transition-colors duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <a
-                      href={`#${link.id}`}
-                      onClick={(e) => handleNavClick(e, link.id)}
+                      onClick={() => setMobileOpen(false)}
                       className={`block rounded-md px-4 py-3 text-base font-medium transition-colors duration-300 ${
-                        activeSection === link.id
+                        active
                           ? 'bg-cyan-400/10 text-cyan-400'
                           : 'text-gray-300 hover:bg-white/5 hover:text-cyan-400'
                       }`}
                     >
                       {link.label}
-                    </a>
-                  )}
-                </li>
-              ))}
+                    </Link>
+                  </li>
+                );
+              })}
               <li className="pt-4 mt-2 border-t border-white/5">
                 <a
-                  href="#contact"
-                  onClick={(e) => handleNavClick(e, 'contact')}
+                  href="https://assets.rajrohit.tech/resume/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block text-center rounded-md border border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-400 transition-all duration-300 hover:bg-cyan-400 hover:text-black"
                 >
-                  Hire Me
+                  Resume
                 </a>
               </li>
             </ul>
