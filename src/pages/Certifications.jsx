@@ -134,16 +134,6 @@ export default function Certifications() {
 
               {/* Actions */}
               <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-white/10">
-                {cert.badgeUrl && (
-                  <a 
-                    href={cert.badgeUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[100px] text-center bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 text-xs font-medium py-2 px-3 rounded-lg flex justify-center items-center gap-1.5 transition-colors"
-                  >
-                    View Badge <ExternalLink size={12} />
-                  </a>
-                )}
                 {cert.certUrl && (
                   <a 
                     href={cert.certUrl} 
