@@ -4,7 +4,6 @@ import About from '../components/About'
 import Skills from '../components/Skills'
 import Projects from '../components/Projects'
 import Timeline from '../components/Timeline'
-import Certifications from '../components/Certifications'
 import Contact from '../components/Contact'
 
 function Home() {
@@ -16,7 +15,6 @@ function Home() {
       <Skills />
       <Projects />
       <Timeline />
-      <Certifications />
       <Contact />
       
       <footer className="bg-[#0a0a0f] border-t border-white/10 py-6 text-center">

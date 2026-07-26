@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LuMenu, LuX } from 'react-icons/lu';
+import { Link } from 'react-router-dom';
 
 const navLinks = [
   { label: 'About', id: 'about' },
   { label: 'Skills', id: 'skills' },
   { label: 'Projects', id: 'projects' },
   { label: 'Journey', id: 'education' },
-  { label: 'Certifications', id: 'certifications' },
+  { label: 'Certifications', path: '/certifications' },
   { label: 'Contact', id: 'contact' },
 ];
 
@@ -77,18 +78,27 @@ function Navbar() {
 
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <li key={link.id}>
-              <a
-                href={`#${link.id}`}
-                onClick={(e) => handleNavClick(e, link.id)}
-                className={`text-sm font-medium transition-colors duration-300 ${
-                  activeSection === link.id
-                    ? 'text-cyan-400'
-                    : 'text-gray-300 hover:text-cyan-400'
-                }`}
-              >
-                {link.label}
-              </a>
+            <li key={link.id || link.path}>
+              {link.path ? (
+                <Link
+                  to={link.path}
+                  className="text-sm font-medium text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  href={`#${link.id}`}
+                  onClick={(e) => handleNavClick(e, link.id)}
+                  className={`text-sm font-medium transition-colors duration-300 ${
+                    activeSection === link.id
+                      ? 'text-cyan-400'
+                      : 'text-gray-300 hover:text-cyan-400'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -125,18 +135,27 @@ function Navbar() {
           >
             <ul className="flex flex-col gap-1 px-6 py-4">
               {navLinks.map((link) => (
-                <li key={link.id}>
-                  <a
-                    href={`#${link.id}`}
-                    onClick={(e) => handleNavClick(e, link.id)}
-                    className={`block rounded-md px-4 py-3 text-base font-medium transition-colors duration-300 ${
-                      activeSection === link.id
-                        ? 'bg-cyan-400/10 text-cyan-400'
-                        : 'text-gray-300 hover:bg-white/5 hover:text-cyan-400'
-                    }`}
-                  >
-                    {link.label}
-                  </a>
+                <li key={link.id || link.path}>
+                  {link.path ? (
+                    <Link
+                      to={link.path}
+                      className="block rounded-md px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-cyan-400 transition-colors duration-300"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={`#${link.id}`}
+                      onClick={(e) => handleNavClick(e, link.id)}
+                      className={`block rounded-md px-4 py-3 text-base font-medium transition-colors duration-300 ${
+                        activeSection === link.id
+                          ? 'bg-cyan-400/10 text-cyan-400'
+                          : 'text-gray-300 hover:bg-white/5 hover:text-cyan-400'
+                      }`}
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
               <li className="pt-4 mt-2 border-t border-white/5">
