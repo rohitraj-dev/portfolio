@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import ProjectDetail from './pages/ProjectDetail'
 
 import Certifications from './pages/Certifications'
+import Education from './pages/Education'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
         <Route path="/certifications" element={<Certifications />} />
+        <Route path="/education" element={<Education />} />
       </Routes>
     </BrowserRouter>
   )

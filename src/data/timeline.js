@@ -1,46 +1,44 @@
-const timeline = [
+const education = [
   {
-    year: "2010–2022",
-    title: "Secondary School — ICSE",
-    institution: "12 years of schooling",
-    description: "Completed secondary education under ICSE board. Built strong foundations in science and mathematics.",
-    type: "education",
+    institution: "BIT Mesra, Deoghar Off-Campus",
+    degree: "BCA",
+    duration: "2025–2029",
+    location: "Deoghar, Jharkhand",
+    description: "Bachelor of Computer Applications. Focusing on software development, computer science fundamentals, and artificial intelligence.",
+    color: "cyan"
   },
   {
-    year: "2022–2024",
-    title: "Higher Secondary — CBSE",
-    institution: "Physics, Chemistry, Maths, English, PE",
-    description: "Completed 11th and 12th under CBSE board with PCM. Developed interest in programming during this period.",
-    type: "education",
+    institution: "IIT Madras",
+    degree: "B.Sc. Data Science & Programming",
+    duration: "2024–2028",
+    location: "Chennai (Remote)",
+    description: "Prestigious online BS degree in Data Science and Programming. 1st semester completed.",
+    color: "purple"
   },
   {
-    year: "2024",
-    title: "Started B.Sc. Data Science & Programming",
-    institution: "IIT Madras (Online Degree)",
-    description: "Enrolled in IIT Madras's prestigious online BS degree in Data Science and Programming. Completed 1st semester.",
-    type: "milestone",
+    institution: "Allen Career Institute, Kota",
+    degree: "IIT-JEE Preparation",
+    duration: "2022–2024",
+    location: "Kota, Rajasthan",
+    description: "Intensive preparation for the Joint Entrance Examination (JEE). Built strong analytical and problem-solving skills.",
+    color: "cyan"
   },
   {
-    year: "2025",
-    title: "Started BCA",
-    institution: "BIT Deoghar Off-Campus",
-    description: "Began Bachelor of Computer Applications at BIT Deoghar. Focusing on software development and AI.",
-    type: "education",
+    institution: "Naveen Public School",
+    degree: "CBSE Higher Secondary",
+    duration: "2022–2024",
+    location: "Deoghar, Jharkhand",
+    description: "Physics, Chemistry, Maths, English, and Physical Education. Developed a core interest in programming.",
+    color: "purple"
   },
   {
-    year: "2025",
-    title: "Built ExamIQ & AI Meal Planner",
-    institution: "Personal Projects",
-    description: "Shipped first real AI-powered projects using Claude API and Python genetic algorithms.",
-    type: "milestone",
-  },
-  {
-    year: "2025 →",
-    title: "Building MarketPulse & Vakalat",
-    institution: "Ongoing",
-    description: "Currently developing an AI stock tracker and a legal tech platform for Indian lawyers.",
-    type: "current",
-  },
+    institution: "St. Francis School Jasidih",
+    degree: "ICSE Secondary",
+    duration: "till 2022",
+    location: "Jasidih, Deoghar",
+    description: "Completed secondary education under the ICSE board. Established strong foundations in science and mathematics.",
+    color: "cyan"
+  }
 ];
 
-export default timeline;
+export default education;
