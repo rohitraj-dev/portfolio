@@ -14,8 +14,8 @@ export default function ProjectDetail() {
     return (
       <div className="min-h-screen bg-[#0a0a0f] flex flex-col items-center justify-center text-white px-6 text-center">
         <h1 className="text-3xl font-bold mb-4 font-[Space_Grotesk]">Project not found</h1>
-        <Link to="/" className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-2 font-medium">
-          <ArrowLeft size={16} /> Back to Home
+        <Link to="/projects" className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-2 font-medium">
+          <ArrowLeft size={16} /> Back to Projects
         </Link>
       </div>
     );
@@ -33,12 +33,12 @@ export default function ProjectDetail() {
       <div className="max-w-4xl mx-auto">
         {/* HERO SECTION */}
         <div className="mb-12">
-          <button 
-            onClick={() => navigate(-1)}
-            className="text-cyan-400 hover:text-white transition-colors flex items-center gap-2 mb-8 font-medium"
+          <Link 
+            to="/projects"
+            className="text-cyan-400 hover:text-white transition-colors flex items-center gap-2 mb-8 font-medium inline-flex"
           >
-            <ArrowLeft size={16} /> Back
-          </button>
+            <ArrowLeft size={16} /> Back to Projects
+          </Link>
           
           <div className="flex flex-wrap items-center gap-4 mb-3">
             <h1 className="font-bold text-4xl md:text-6xl font-[Space_Grotesk]">
