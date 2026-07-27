@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Download } from 'lucide-react';
 import { FaGithub, FaLinkedinIn, FaXTwitter, FaInstagram } from 'react-icons/fa6';
-import { skillsData } from '../data/skills';
+import { skills } from '../data/skills';
 
 const socials = [
   { icon: FaGithub, label: 'GitHub', href: 'https://github.com/rohitraj-dev' },
@@ -20,11 +20,6 @@ const quickFacts = [
   { emoji: '🌐', label: 'Languages', value: 'English, Hindi, learning French & German' },
 ];
 
-const softSkills = [
-  'Communication', 'Teamwork', 'Responsibility', 'Creativity',
-  'Problem-solving', 'Leadership', 'Adaptive',
-];
-
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -33,6 +28,10 @@ const fadeUp = {
 };
 
 export default function About() {
+  const techSkills = skills.filter(group => group.category !== "Soft Skills");
+  const softSkillsGroup = skills.find(group => group.category === "Soft Skills");
+  const softSkills = softSkillsGroup ? softSkillsGroup.items : [];
+
   return (
     <div className="min-h-screen bg-[#212529] text-[#f8f9fa] py-20 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -100,18 +99,17 @@ export default function About() {
           <h2 className="text-2xl font-bold mb-2">Tech Skills</h2>
           <div className="w-16 h-1 bg-[#5b8fa8] rounded-full mb-8"></div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillsData.map((group, i) => (
+            {techSkills.map((group, i) => (
               <motion.div key={group.category} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 hover:border-[#5b8fa8]/60 transition-all duration-300">
                 <div className="flex items-center gap-2 mb-4">
-                  {group.categoryIcon && <group.categoryIcon className="text-[#5b8fa8]" size={18} />}
+                  <span className="text-[#5b8fa8]">⚡</span>
                   <h3 className="text-[#f8f9fa] font-semibold text-sm">{group.category}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {group.items.map((skill) => (
-                    <span key={skill.name} className="flex items-center gap-1.5 bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-xs font-medium rounded-full px-3 py-1.5">
-                      {skill.icon && <skill.icon size={12} />}
-                      {skill.name}
+                    <span key={skill} className="flex items-center gap-1.5 bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-xs font-medium rounded-full px-3 py-1.5">
+                      {skill}
                     </span>
                   ))}
                 </div>
@@ -121,18 +119,20 @@ export default function About() {
         </motion.section>
 
         {/* Soft Skills */}
-        <motion.section {...fadeUp} className="mb-20">
-          <h2 className="text-2xl font-bold mb-2">Soft Skills</h2>
-          <div className="w-16 h-1 bg-[#5b8fa8] rounded-full mb-8"></div>
-          <div className="flex flex-wrap gap-3">
-            {softSkills.map((skill, i) => (
-              <motion.span key={skill} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.06 }}
-                className="bg-[#495057] text-[#f8f9fa] text-sm font-medium rounded-full px-5 py-2.5">
-                {skill}
-              </motion.span>
-            ))}
-          </div>
-        </motion.section>
+        {softSkills.length > 0 && (
+          <motion.section {...fadeUp} className="mb-20">
+            <h2 className="text-2xl font-bold mb-2">Soft Skills</h2>
+            <div className="w-16 h-1 bg-[#5b8fa8] rounded-full mb-8"></div>
+            <div className="flex flex-wrap gap-3">
+              {softSkills.map((skill, i) => (
+                <motion.span key={skill} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.06 }}
+                  className="bg-[#495057] text-[#f8f9fa] text-sm font-medium rounded-full px-5 py-2.5">
+                  {skill}
+                </motion.span>
+              ))}
+            </div>
+          </motion.section>
+        )}
 
         {/* Resume CTA */}
         <motion.section {...fadeUp} className="text-center py-12">

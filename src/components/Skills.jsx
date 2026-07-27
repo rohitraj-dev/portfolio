@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { skillsData, learningSkills } from '../data/skills';
+import { skills } from '../data/skills';
 
 export default function Skills() {
   const ref = useRef(null);
@@ -27,21 +27,18 @@ export default function Skills() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mb-20">
-            {skillsData.map((categoryObj, idx) => {
-              const Icon = categoryObj.categoryIcon;
+            {skills.map((categoryObj, idx) => {
               return (
                 <motion.div key={idx} variants={itemVariants} className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 hover:border-[#5b8fa8]/60 transition-colors duration-300">
                   <div className="flex items-center gap-3 mb-6">
-                    <Icon className="text-[#5b8fa8] text-2xl" />
+                    <span className="text-[#5b8fa8] text-2xl">⚡</span>
                     <h3 className="text-xl font-bold text-[#f8f9fa]">{categoryObj.category}</h3>
                   </div>
                   <div className="flex flex-wrap gap-3">
-                    {categoryObj.items.map((skill, sIdx) => {
-                      const SkillIcon = skill.icon;
+                    {categoryObj.items.map((skillName, sIdx) => {
                       return (
                         <div key={sIdx} className="flex items-center gap-2 bg-[#495057] text-[#f8f9fa] text-sm font-medium rounded-full px-3 py-1.5 cursor-default">
-                          {SkillIcon ? <SkillIcon className="text-base" /> : <span className="text-base">⚡</span>}
-                          <span>{skill.name}</span>
+                          <span>{skillName}</span>
                         </div>
                       );
                     })}
@@ -50,17 +47,6 @@ export default function Skills() {
               );
             })}
           </div>
-
-          <motion.div variants={itemVariants} className="flex flex-col items-center">
-            <h3 className="text-2xl font-bold text-[#f8f9fa] mb-6">Currently Learning</h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              {learningSkills.map((skill, idx) => (
-                <div key={idx} className="bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-sm md:text-base font-medium rounded-full px-5 py-2 hover:bg-[#5b8fa8]/20 transition-colors duration-300 cursor-default">
-                  {skill.name}
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

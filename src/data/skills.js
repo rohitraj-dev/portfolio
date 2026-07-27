@@ -1,68 +1,36 @@
-import { 
-  SiPython, SiJavascript, SiC, 
-  SiReact, SiTailwindcss, SiFramer, SiStreamlit,
-  SiFastapi, SiScikitlearn,
-  SiGit, SiGithub, SiVercel
-} from 'react-icons/si';
-import { 
-  FaCode, FaDesktop, FaServer, FaBrain, FaWrench,
-  FaTerminal, FaChartSimple 
-} from 'react-icons/fa6';
-
-export const skillsData = [
+export const skills = [
   {
     category: "Languages",
-    categoryIcon: FaCode,
-    items: [
-      { name: "Python", icon: SiPython },
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "C", icon: SiC }
-    ]
+    items: ["Python", "JavaScript", "TypeScript", "C"],
   },
   {
     category: "Frontend",
-    categoryIcon: FaDesktop,
-    items: [
-      { name: "React", icon: SiReact },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-      { name: "Framer Motion", icon: SiFramer },
-      { name: "Streamlit", icon: SiStreamlit }
-    ]
+    items: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Streamlit", "shadcn/ui", "Leaflet.js"],
   },
   {
     category: "Backend & APIs",
-    categoryIcon: FaServer,
-    items: [
-      { name: "FastAPI", icon: SiFastapi },
-      { name: "Claude API", icon: FaBrain },
-      { name: "OpenAI API", icon: null }
-    ]
+    items: ["FastAPI", "Node.js", "Express", "REST APIs", "WebSocket"],
   },
   {
     category: "AI/ML & Data",
-    categoryIcon: FaBrain,
-    items: [
-      { name: "scikit-learn", icon: SiScikitlearn },
-      { name: "LSTM", icon: FaChartSimple }, 
-      { name: "XGBoost", icon: FaChartSimple },
-      { name: "yfinance", icon: FaChartSimple }
-    ]
+    items: ["scikit-learn", "XGBoost", "LSTM", "Genetic Algorithm", "Isolation Forest", "DBSCAN", "yfinance", "USDA FoodData API"],
+  },
+  {
+    category: "Databases",
+    items: ["PostgreSQL", "MongoDB Atlas", "SQLite", "Supabase", "Redis"],
+  },
+  {
+    category: "AI Integrations",
+    items: ["Claude API", "OpenAI API"],
   },
   {
     category: "Tools & Platforms",
-    categoryIcon: FaWrench,
-    items: [
-      { name: "Git", icon: SiGit },
-      { name: "GitHub", icon: SiGithub },
-      { name: "Vercel", icon: SiVercel },
-      { name: "Cursor", icon: FaTerminal } 
-    ]
-  }
+    items: ["Git", "GitHub", "Vercel", "Railway", "Cloudflare Pages", "Cursor"],
+  },
+  {
+    category: "Soft Skills",
+    items: ["Communication", "Teamwork", "Responsibility", "Creativity", "Problem-solving", "Leadership", "Adaptive"],
+  },
 ];
 
-export const learningSkills = [
-  { name: "French 🇫🇷" },
-  { name: "German 🇩🇪" },
-  { name: "Rust 🦀" },
-  { name: "Three.js" }
-];
+export default skills;
