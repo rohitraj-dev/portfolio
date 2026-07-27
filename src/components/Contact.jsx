@@ -61,8 +61,8 @@ export default function Contact() {
             <motion.div variants={itemVariants} className="flex flex-col gap-5 mb-12">
               <div className="flex items-center gap-4 text-[#adb5bd] justify-center lg:justify-start">
                 <span className="text-xl">📧</span>
-                <a href="mailto:mail.rohitraj@icloud.com" className="hover:text-[#5b8fa8] font-medium transition-colors">
-                  mail.rohitraj@icloud.com
+                <a href="mailto:mail.rohitraj9973@gmail.com" className="hover:text-[#5b8fa8] font-medium transition-colors">
+                  mail.rohitraj9973@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-4 text-[#adb5bd] justify-center lg:justify-start">
