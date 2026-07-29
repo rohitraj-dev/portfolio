@@ -51,7 +51,7 @@ export default function About() {
                 variants={itemVariants}
                 className="w-[180px] h-[180px] rounded-full ring-2 ring-[#5b8fa8] bg-[#495057] flex items-center justify-center mb-6 overflow-hidden"
               >
-                <img src="https://assets.rajrohit.tech/photo.jpg" alt="Rohit Raj" className="w-full h-full object-cover" />
+                <img src="https://assets.rajrohit.tech/photos/photo.jpg" alt="Rohit Raj" className="w-full h-full object-cover" />
               </motion.div>
               
               <motion.h3 variants={itemVariants} className="text-3xl font-bold text-[#f8f9fa] mb-2">

@@ -50,7 +50,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
             <div className="md:col-span-2 flex justify-center">
               <div className="w-64 h-72 bg-[#343a40] border border-[#495057] rounded-2xl flex flex-col items-center justify-center overflow-hidden">
-                <img src="https://assets.rajrohit.tech/photo.jpg" alt="Rohit Raj" className="w-full h-full object-cover" />
+                <img src="https://assets.rajrohit.tech/photos/photo.jpg" alt="Rohit Raj" className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="md:col-span-3">
