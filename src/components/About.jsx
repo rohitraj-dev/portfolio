@@ -49,9 +49,9 @@ export default function About() {
             <div className="lg:col-span-5 flex flex-col items-center text-center">
               <motion.div 
                 variants={itemVariants}
-                className="w-[180px] h-[180px] rounded-full ring-2 ring-[#5b8fa8] bg-[#495057] flex items-center justify-center mb-6"
+                className="w-[180px] h-[180px] rounded-full ring-2 ring-[#5b8fa8] bg-[#495057] flex items-center justify-center mb-6 overflow-hidden"
               >
-                <span className="text-5xl font-bold text-[#f8f9fa]">RR</span>
+                <img src="https://assets.rajrohit.tech/photo.jpg" alt="Rohit Raj" className="w-full h-full object-cover" />
               </motion.div>
               
               <motion.h3 variants={itemVariants} className="text-3xl font-bold text-[#f8f9fa] mb-2">

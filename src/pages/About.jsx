@@ -49,9 +49,8 @@ export default function About() {
         <motion.section {...fadeUp} className="mb-20">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
             <div className="md:col-span-2 flex justify-center">
-              <div className="w-64 h-72 bg-[#343a40] border border-[#495057] rounded-2xl flex flex-col items-center justify-center gap-3">
-                <span className="text-6xl font-bold text-[#5b8fa8]">RR</span>
-                <span className="text-[#6c757d] text-sm">Photo coming soon</span>
+              <div className="w-64 h-72 bg-[#343a40] border border-[#495057] rounded-2xl flex flex-col items-center justify-center overflow-hidden">
+                <img src="https://assets.rajrohit.tech/photo.jpg" alt="Rohit Raj" className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="md:col-span-3">
