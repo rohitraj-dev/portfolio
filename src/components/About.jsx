@@ -49,9 +49,9 @@ export default function About() {
             <div className="lg:col-span-5 flex flex-col items-center text-center">
               <motion.div 
                 variants={itemVariants}
-                className="w-[180px] h-[180px] rounded-full ring-2 ring-[#5b8fa8] bg-[#495057] flex items-center justify-center mb-6 overflow-hidden"
+                className="w-[180px] h-[180px] flex items-center justify-center mb-6"
               >
-                <img src="https://assets.rajrohit.tech/photos/photo.jpg" alt="Rohit Raj" className="w-full h-full object-cover" />
+                <img src="https://assets.rajrohit.tech/photos/photo_no-back.png" alt="Rohit Raj" className="w-full h-full object-contain" style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(91,143,168,0.3))' }} />
               </motion.div>
               
               <motion.h3 variants={itemVariants} className="text-3xl font-bold text-[#f8f9fa] mb-2">

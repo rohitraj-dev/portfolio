@@ -49,8 +49,8 @@ export default function About() {
         <motion.section {...fadeUp} className="mb-20">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
             <div className="md:col-span-2 flex justify-center">
-              <div className="w-64 h-72 bg-[#343a40] border border-[#495057] rounded-2xl flex flex-col items-center justify-center overflow-hidden">
-                <img src="https://assets.rajrohit.tech/photos/photo.jpg" alt="Rohit Raj" className="w-full h-full object-cover" />
+              <div className="w-64 h-72 flex flex-col items-center justify-center">
+                <img src="https://assets.rajrohit.tech/photos/photo_no-back.png" alt="Rohit Raj" className="w-full h-full object-contain" style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(91,143,168,0.3))' }} />
               </div>
             </div>
             <div className="md:col-span-3">
