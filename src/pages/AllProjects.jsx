@@ -83,11 +83,11 @@ export default function AllProjects() {
                       <p className="text-[#adb5bd] text-sm leading-relaxed mb-6 flex-1">{project.description}</p>
                       
                       <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tags.slice(0, 4).map((tag, idx) => (
+                        {(project.tags || project.stack || []).slice(0, 4).map((tag, idx) => (
                           <span key={idx} className="bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-xs rounded-full px-2.5 py-1">{tag}</span>
                         ))}
-                        {project.tags.length > 4 && (
-                          <span className="bg-[#495057] text-[#6c757d] text-xs rounded-full px-2.5 py-1">+{project.tags.length - 4}</span>
+                        {(project.tags || project.stack || []).length > 4 && (
+                          <span className="bg-[#495057] text-[#6c757d] text-xs rounded-full px-2.5 py-1">+{(project.tags || project.stack || []).length - 4}</span>
                         )}
                       </div>
                       

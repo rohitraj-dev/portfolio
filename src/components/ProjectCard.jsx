@@ -29,7 +29,7 @@ export default function ProjectCard({ project, itemVariants }) {
       </p>
       
       <div className="flex flex-wrap gap-2 mt-4">
-        {project.tags.map((tag, idx) => (
+        {(project.tags || project.stack || []).map((tag, idx) => (
           <span key={idx} className="bg-[#495057] text-[#f8f9fa] text-xs rounded-full px-3 py-1">
             {tag}
           </span>
