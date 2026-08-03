@@ -44,7 +44,7 @@ export default function ProjectDetail() {
           <p className="text-[#5b8fa8] text-lg md:text-xl font-medium mb-6">{project.tagline}</p>
 
           <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag, idx) => (
+            {(project.tags || project.stack || []).map((tag, idx) => (
               <span key={idx} className="bg-[#495057] text-[#f8f9fa] text-xs rounded-full px-3 py-1">{tag}</span>
             ))}
           </div>
@@ -59,7 +59,7 @@ export default function ProjectDetail() {
           <div className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 md:p-8">
             <h2 className="text-[#5b8fa8] font-semibold text-xl mb-4">Tech Stack</h2>
             <div className="flex flex-wrap gap-3">
-              {project.tags.map((tag, idx) => (
+              {(project.stack || project.tags || []).map((tag, idx) => (
                 <span key={idx} className="bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-sm font-medium rounded-full px-4 py-2">{tag}</span>
               ))}
             </div>
