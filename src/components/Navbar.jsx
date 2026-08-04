@@ -42,11 +42,8 @@ function Navbar() {
       className="sticky top-0 z-50 w-full bg-[#212529] border-b border-[#495057]"
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link
-          to="/"
-          className="font-bold text-2xl text-[#5b8fa8] transition-opacity hover:opacity-80"
-        >
-          RR
+        <Link to="/" className="transition-opacity hover:opacity-80">
+          <span style={{ fontFamily: 'Georgia, serif' }} className="text-2xl font-bold tracking-widest text-[#c9a84c]">Rohit</span>
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">
