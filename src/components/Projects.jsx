@@ -1,38 +1,99 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import projects from '../data/projects';
 import ProjectCard from './ProjectCard';
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
+
+// Show only first 6 on the home page
+const featured = projects.slice(0, 6);
+
 export default function Projects() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 } }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-  };
-
   return (
-    <section id="projects" className="bg-[#212529] py-24 px-4 md:px-8 lg:px-16">
+    <section
+      id="projects"
+      className="py-24 px-6 md:px-16"
+      style={{ backgroundColor: 'var(--bg)' }}
+    >
       <div className="max-w-6xl mx-auto">
-        <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"} className="flex flex-col items-center">
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#f8f9fa] mb-3">Projects</h2>
-            <div className="w-20 h-1 bg-[#5b8fa8] rounded-full mx-auto mb-4"></div>
-            <p className="text-[#adb5bd] text-lg">Things I've built (and am still building)</p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} itemVariants={itemVariants} />
-            ))}
-          </div>
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-4 mb-4"
+        >
+          <span
+            className="w-10 h-px"
+            style={{ backgroundColor: 'var(--gold)', display: 'inline-block' }}
+          />
+          <span
+            style={{
+              color: 'var(--gold)',
+              fontSize: '0.7rem',
+              letterSpacing: '0.2em',
+              fontVariant: 'small-caps',
+              fontWeight: 600,
+            }}
+          >
+            PROJECTS
+          </span>
         </motion.div>
+
+        {/* Heading + "View All" row */}
+        <div className="flex items-end justify-between mb-12 gap-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.08 }}
+            className="font-display text-3xl md:text-4xl font-bold"
+            style={{ color: 'var(--text)' }}
+          >
+            Things I've Built
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Link
+              to="/projects"
+              className="flex items-center gap-1.5 text-sm font-medium shrink-0 transition-colors duration-200 group"
+              style={{ color: 'var(--gold)' }}
+            >
+              View All
+              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Cards grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
+          {featured.map((project) => (
+            <ProjectCard key={project.id} project={project} variants={cardVariants} />
+          ))}
+        </motion.div>
+
       </div>
     </section>
   );

@@ -1,62 +1,165 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, MapPin, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import educationData from '../data/timeline';
+import { ArrowLeft } from 'lucide-react';
+import timeline from '../data/timeline';
+
+const fadeUp = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.15 },
+  transition: { duration: 0.6, ease: 'easeOut' },
+};
+
+function SectionLabel({ text }) {
+  return (
+    <div className="flex items-center gap-4 mb-4">
+      <span
+        className="w-10 h-px"
+        style={{ backgroundColor: 'var(--gold)', display: 'inline-block' }}
+      />
+      <span
+        style={{
+          color: 'var(--gold)',
+          fontSize: '0.7rem',
+          letterSpacing: '0.2em',
+          fontVariant: 'small-caps',
+          fontWeight: 600,
+        }}
+      >
+        {text}
+      </span>
+    </div>
+  );
+}
 
 export default function Education() {
   return (
-    <div className="min-h-screen bg-[#212529] text-[#f8f9fa] py-20 px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        
-        <div className="mb-20">
-          <Link to="/" className="text-[#5b8fa8] hover:text-[#5b8fa8] transition-colors flex items-center gap-2 mb-8 font-medium inline-flex">
-            <ArrowLeft size={16} /> Back to Home
+    <div
+      className="min-h-screen py-20 px-6 md:px-16"
+      style={{ backgroundColor: 'var(--bg)', color: 'var(--text)' }}
+    >
+      <div className="max-w-4xl mx-auto">
+
+        {/* Back link */}
+        <div className="mb-14">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200"
+            style={{ color: 'var(--text-muted)' }}
+            onMouseEnter={e => { e.currentTarget.style.color = 'var(--gold)'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; }}
+          >
+            <ArrowLeft size={15} /> Back to Home
           </Link>
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#f8f9fa] mb-4">Education</h1>
-            <p className="text-[#adb5bd] text-lg max-w-2xl">My academic journey</p>
-          </motion.div>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#495057] md:-translate-x-1/2 rounded-full"></div>
+        {/* Page hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-20"
+        >
+          <SectionLabel text="EDUCATION" />
+          <h1
+            className="font-display text-5xl md:text-6xl font-bold"
+            style={{ color: 'var(--text)' }}
+          >
+            Academic Journey
+          </h1>
+        </motion.div>
 
-          {educationData.map((item, index) => {
-            const isEven = index % 2 === 0;
-            return (
-              <div key={index} className={`relative flex flex-col md:flex-row w-full mb-16 ${isEven ? 'md:justify-start' : 'md:justify-end'}`}>
-                <div className="absolute left-6 md:left-1/2 top-8 w-5 h-5 rounded-full border-4 border-[#212529] bg-[#5b8fa8] md:-translate-x-1/2 z-10 -translate-x-1/2"></div>
-                <motion.div
-                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="w-full md:w-[45%] pl-16 md:pl-0"
+        {/* Full vertical timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div
+            className="absolute left-3 top-0 bottom-0 w-px"
+            style={{ backgroundColor: 'var(--border)' }}
+          />
+
+          {timeline.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, ease: 'easeOut', delay: index * 0.07 }}
+              className="relative pl-12 mb-10 last:mb-0"
+            >
+              {/* Dot */}
+              <div
+                className="absolute left-3 top-5 w-2 h-2 rounded-full -translate-x-1/2 z-10"
+                style={{ backgroundColor: 'var(--gold)', border: '2px solid var(--bg)' }}
+              />
+
+              {/* Card */}
+              <div
+                className="p-6 rounded-sm transition-colors duration-300"
+                style={{ backgroundColor: 'var(--surface)', border: '1px solid var(--border)' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--gold)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; }}
+              >
+                {/* Year */}
+                <span
+                  className="text-xs font-semibold mb-3 block"
+                  style={{ color: 'var(--gold)', letterSpacing: '0.05em' }}
                 >
-                  <div className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 md:p-8 hover:border-[#5b8fa8]/60 transition-all duration-300">
-                    <div className="mb-4">
-                      <span className="inline-block bg-[#5b8fa8]/10 border border-[#5b8fa8]/30 text-[#5b8fa8] text-xs font-bold px-3 py-1 rounded-full mb-3">
-                        {item.degree}
-                      </span>
-                      <h3 className="text-2xl font-bold text-[#f8f9fa] leading-tight">{item.institution}</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-4 text-sm text-[#6c757d] mb-4 font-medium">
-                      <div className="flex items-center gap-1.5">
-                        <Calendar size={14} className="text-[#5b8fa8]" />
-                        {item.duration}
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <MapPin size={14} className="text-[#5b8fa8]" />
-                        {item.location}
-                      </div>
-                    </div>
-                    <p className="text-[#adb5bd] leading-relaxed text-sm md:text-base">{item.description}</p>
-                  </div>
-                </motion.div>
+                  {item.duration}
+                </span>
+
+                {/* Header row */}
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
+                  <h2
+                    className="font-display text-xl md:text-2xl font-bold leading-snug"
+                    style={{ color: 'var(--text)' }}
+                  >
+                    {item.institution}
+                  </h2>
+                  <span
+                    className="text-xs px-3 py-1 rounded-full shrink-0"
+                    style={{
+                      border: '1px solid var(--gold)',
+                      color: 'var(--gold)',
+                      backgroundColor: 'transparent',
+                    }}
+                  >
+                    {item.degree}
+                  </span>
+                </div>
+
+                {/* Location */}
+                <p
+                  className="text-xs mb-4"
+                  style={{ color: 'var(--text-muted)', opacity: 0.7 }}
+                >
+                  📍 {item.location}
+                </p>
+
+                {/* Description */}
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  {item.description}
+                </p>
               </div>
-            );
-          })}
+            </motion.div>
+          ))}
         </div>
+
+        {/* CTA */}
+        <motion.div {...fadeUp} className="flex justify-center mt-20">
+          <Link
+            to="/certifications"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-sm text-sm font-medium transition-all duration-200"
+            style={{ border: '1px solid var(--gold)', color: 'var(--gold)', backgroundColor: 'transparent' }}
+            onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--gold-glow)'; }}
+            onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; }}
+          >
+            View Certifications →
+          </Link>
+        </motion.div>
+
       </div>
     </div>
   );

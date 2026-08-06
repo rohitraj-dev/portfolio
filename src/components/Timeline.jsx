@@ -3,35 +3,112 @@ import timeline from '../data/timeline';
 
 export default function Timeline() {
   return (
-    <section id="education" className="bg-[#212529] py-24 px-4 md:px-8 lg:px-16 overflow-hidden">
+    <section
+      id="education"
+      className="py-24 px-6 md:px-16 overflow-hidden"
+      style={{ backgroundColor: 'var(--bg)' }}
+    >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#f8f9fa] mb-3">Journey</h2>
-          <div className="w-20 h-1 bg-[#5b8fa8] rounded-full mx-auto mb-4"></div>
-          <p className="text-[#adb5bd] text-lg">Education & milestones</p>
-        </div>
 
-        <div className="relative max-w-4xl mx-auto mt-12">
-          <div className="absolute left-2 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#495057] md:-translate-x-1/2"></div>
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-4 mb-4"
+        >
+          <span
+            className="w-10 h-px"
+            style={{ backgroundColor: 'var(--gold)', display: 'inline-block' }}
+          />
+          <span
+            style={{
+              color: 'var(--gold)',
+              fontSize: '0.7rem',
+              letterSpacing: '0.2em',
+              fontVariant: 'small-caps',
+              fontWeight: 600,
+            }}
+          >
+            EDUCATION
+          </span>
+        </motion.div>
+
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="font-display text-3xl md:text-4xl font-bold mb-16"
+          style={{ color: 'var(--text)' }}
+        >
+          My Journey
+        </motion.h2>
+
+        {/* Timeline */}
+        <div className="relative max-w-4xl mx-auto">
+          {/* Vertical line */}
+          <div
+            className="absolute left-3 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-1/2"
+            style={{ backgroundColor: 'var(--border)' }}
+          />
 
           {timeline.map((item, index) => {
             const isEven = index % 2 === 0;
             return (
-              <div key={index} className={`relative flex w-full mb-10 ${isEven ? 'md:justify-start' : 'md:justify-end'} pl-10 md:pl-0`}>
-                <div className="absolute left-2 md:left-1/2 top-6 w-4 h-4 rounded-full border-4 border-[#212529] -translate-x-1/2 md:-translate-x-1/2 z-10 bg-[#5b8fa8]"></div>
+              <div
+                key={index}
+                className={`relative flex w-full mb-10 ${isEven ? 'md:justify-start' : 'md:justify-end'} pl-10 md:pl-0`}
+              >
+                {/* Dot */}
+                <div
+                  className="absolute left-3 md:left-1/2 top-5 w-2 h-2 rounded-full -translate-x-1/2 z-10"
+                  style={{ backgroundColor: 'var(--gold)', border: '2px solid var(--bg)' }}
+                />
+
+                {/* Card */}
                 <motion.div
-                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                  initial={{ opacity: 0, x: isEven ? -30 : 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="w-full md:w-[45%] bg-[#343a40] border border-[#495057] rounded-2xl p-5"
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                  className="w-full md:w-[45%] p-5 rounded-sm transition-colors duration-300"
+                  style={{ backgroundColor: 'var(--surface)', border: '1px solid var(--border)' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--gold)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; }}
                 >
-                  <div className="bg-[#5b8fa8]/10 text-[#5b8fa8] text-xs px-3 py-1 rounded-full w-fit mb-3 font-medium border border-[#5b8fa8]/30">
+                  {/* Year badge */}
+                  <span
+                    className="text-xs font-medium mb-3 block"
+                    style={{ color: 'var(--gold)' }}
+                  >
                     {item.duration}
-                  </div>
-                  <h3 className="text-[#f8f9fa] font-semibold text-base leading-snug">{item.institution}</h3>
-                  <p className="text-[#6c757d] text-xs mt-1">{item.degree}</p>
-                  <p className="text-[#adb5bd] text-sm mt-3 leading-relaxed">{item.description}</p>
+                  </span>
+
+                  {/* Institution */}
+                  <h3
+                    className="font-medium text-base leading-snug mb-1"
+                    style={{ color: 'var(--text)' }}
+                  >
+                    {item.institution}
+                  </h3>
+
+                  {/* Degree */}
+                  <p className="text-xs mb-3" style={{ color: 'var(--gold)', opacity: 0.75 }}>
+                    {item.degree}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+                    {item.description}
+                  </p>
+
+                  {/* Location */}
+                  <p className="text-xs mt-2" style={{ color: 'var(--text-muted)', opacity: 0.6 }}>
+                    📍 {item.location}
+                  </p>
                 </motion.div>
               </div>
             );

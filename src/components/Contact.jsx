@@ -1,31 +1,72 @@
 import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { FaGithub, FaLinkedin, FaXTwitter, FaInstagram } from 'react-icons/fa6';
+import { Mail } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
+
+const contactLinks = [
+  {
+    icon: Mail,
+    label: 'mail.rohitraj9973@gmail.com',
+    href: 'mailto:mail.rohitraj9973@gmail.com',
+  },
+  {
+    icon: FaGithub,
+    label: 'github.com/rohitraj-dev',
+    href: 'https://github.com/rohitraj-dev',
+  },
+  {
+    icon: FaLinkedin,
+    label: 'linkedin.com/in/rohitraj-dev',
+    href: 'https://www.linkedin.com/in/rohitraj-dev/',
+  },
+  {
+    icon: FaXTwitter,
+    label: 'x.com/rajrohit_7388',
+    href: 'https://x.com/rajrohit_7388',
+  },
+];
+
+const inputStyle = {
+  backgroundColor: 'var(--surface-2)',
+  border: '1px solid var(--border)',
+  color: 'var(--text)',
+  borderRadius: '2px',
+  width: '100%',
+  outline: 'none',
+};
+
+const labelStyle = {
+  color: 'var(--text-muted)',
+  fontSize: '0.7rem',
+  textTransform: 'uppercase',
+  letterSpacing: '0.1em',
+  display: 'block',
+  marginBottom: '0.375rem',
+};
+
+function Field({ label, children }) {
+  return (
+    <div>
+      <label style={labelStyle}>{label}</label>
+      {children}
+    </div>
+  );
+}
 
 export default function Contact() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const formRef = useRef(null);
   const [status, setStatus] = useState({ type: null, message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.15 } }
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-  };
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus({ type: null, message: '' });
-    emailjs.sendForm('service_b7aivig', 'template_l17vlez', formRef.current, 'zW73IJZEv2Nsgd6w4')
+    emailjs
+      .sendForm('service_b7aivig', 'template_l17vlez', formRef.current, 'zW73IJZEv2Nsgd6w4')
       .then(() => {
-        setStatus({ type: 'success', message: "Message sent! I'll get back to you soon ✓" });
+        setStatus({ type: 'success', message: "Message sent!" });
         formRef.current.reset();
       })
       .catch((error) => {
@@ -35,79 +76,180 @@ export default function Contact() {
       .finally(() => setIsSubmitting(false));
   };
 
-  const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/rohitraj-dev", label: "GitHub" },
-    { icon: FaLinkedin, href: "https://www.linkedin.com/in/rohitraj-dev/", label: "LinkedIn" },
-    { icon: FaXTwitter, href: "https://x.com/rajrohit_7388", label: "Twitter/X" },
-    { icon: FaInstagram, href: "https://www.instagram.com/r.a.j_rohit/", label: "Instagram" }
-  ];
+  const handleFocus = (e) => { e.currentTarget.style.borderColor = 'var(--gold)'; };
+  const handleBlur  = (e) => { e.currentTarget.style.borderColor = 'var(--border)'; };
 
   return (
-    <section id="contact" className="bg-[#212529] py-24 px-4 md:px-8 lg:px-16">
+    <section
+      id="contact"
+      className="py-24 px-6 md:px-16"
+      style={{ backgroundColor: 'var(--bg)' }}
+    >
       <div className="max-w-6xl mx-auto">
-        <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          
-          <div className="flex flex-col">
-            <motion.div variants={itemVariants} className="mb-8 text-center lg:text-left">
-              <h2 className="text-4xl font-bold text-[#f8f9fa] mb-3">Get In Touch</h2>
-              <div className="w-20 h-1 bg-[#5b8fa8] rounded-full mx-auto lg:mx-0"></div>
-            </motion.div>
 
-            <motion.p variants={itemVariants} className="text-[#adb5bd] text-lg leading-relaxed mb-10 text-center lg:text-left">
-              I'm open to internships, freelance projects, and collaborations. Drop a message!
-            </motion.p>
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-4 mb-4"
+        >
+          <span
+            className="w-10 h-px"
+            style={{ backgroundColor: 'var(--gold)', display: 'inline-block' }}
+          />
+          <span
+            style={{
+              color: 'var(--gold)',
+              fontSize: '0.7rem',
+              letterSpacing: '0.2em',
+              fontVariant: 'small-caps',
+              fontWeight: 600,
+            }}
+          >
+            CONTACT
+          </span>
+        </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-5 mb-12">
-              <div className="flex items-center gap-4 text-[#adb5bd] justify-center lg:justify-start">
-                <span className="text-xl">📧</span>
-                <a href="mailto:mail.rohitraj9973@gmail.com" className="hover:text-[#5b8fa8] font-medium transition-colors">
-                  mail.rohitraj9973@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center gap-4 text-[#adb5bd] justify-center lg:justify-start">
-                <span className="text-xl">📍</span>
-                <span className="font-medium">Deoghar, Jharkhand, India</span>
-              </div>
-            </motion.div>
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="font-display text-3xl md:text-4xl font-bold mb-4"
+          style={{ color: 'var(--text)' }}
+        >
+          Get In Touch
+        </motion.h2>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center lg:justify-start">
-              {socialLinks.map((social) => (
-                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}
-                  className="flex items-center gap-2 bg-[#343a40] border border-[#495057] hover:border-[#5b8fa8]/60 text-[#adb5bd] hover:text-[#5b8fa8] px-4 py-2.5 rounded-full transition-all duration-300">
-                  <social.icon className="text-lg" />
-                  <span className="text-sm font-medium">{social.label}</span>
-                </a>
-              ))}
-            </motion.div>
-          </div>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.14 }}
+          className="text-sm mb-14 max-w-lg"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          Open to internships, freelance projects, and collaborations. Drop a message or reach out directly.
+        </motion.p>
 
-          <motion.div variants={itemVariants} className="bg-[#343a40] border border-[#495057] rounded-2xl p-6 md:p-8">
+        {/* 2-col layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+          {/* Left: contact info */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="flex flex-col gap-3"
+          >
+            {contactLinks.map(({ icon: Icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('mailto') ? '_self' : '_blank'}
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-3 rounded-sm transition-all duration-200"
+                style={{
+                  backgroundColor: 'var(--surface)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-muted)',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = 'var(--gold)';
+                  e.currentTarget.style.color = 'var(--gold)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.color = 'var(--text-muted)';
+                }}
+              >
+                <Icon size={15} className="shrink-0" />
+                <span className="text-sm truncate">{label}</span>
+              </a>
+            ))}
+
+            <p
+              className="text-xs italic mt-2 pl-1"
+              style={{ color: 'var(--text-muted)', opacity: 0.7 }}
+            >
+              Open to internships, freelance, and collaborations.
+            </p>
+          </motion.div>
+
+          {/* Right: form */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+          >
             <form ref={formRef} onSubmit={sendEmail} className="flex flex-col gap-5">
-              <div>
-                <input type="text" name="name" placeholder="Name" required
-                  className="w-full bg-[#495057] border border-[#495057] rounded-xl px-4 py-3.5 text-[#f8f9fa] placeholder-[#6c757d] focus:outline-none focus:border-[#5b8fa8] transition-colors" />
-              </div>
-              <div>
-                <input type="email" name="email" placeholder="Email" required
-                  className="w-full bg-[#495057] border border-[#495057] rounded-xl px-4 py-3.5 text-[#f8f9fa] placeholder-[#6c757d] focus:outline-none focus:border-[#5b8fa8] transition-colors" />
-              </div>
-              <div>
-                <textarea name="message" placeholder="Message" rows={5} required
-                  className="w-full bg-[#495057] border border-[#495057] rounded-xl px-4 py-3.5 text-[#f8f9fa] placeholder-[#6c757d] focus:outline-none focus:border-[#5b8fa8] transition-colors resize-none"></textarea>
-              </div>
-              <button type="submit" disabled={isSubmitting}
-                className="w-full bg-[#5b8fa8] text-[#212529] font-semibold rounded-xl py-3.5 mt-2 hover:bg-[#5b8fa8] transition-colors disabled:opacity-50">
-                {isSubmitting ? 'Sending...' : 'Send Message →'}
+              <Field label="Name">
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Your name"
+                  className="px-4 py-3 text-sm transition-colors duration-200"
+                  style={{ ...inputStyle, '::placeholder': { color: 'var(--text-muted)' } }}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+              </Field>
+
+              <Field label="Email">
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="your@email.com"
+                  className="px-4 py-3 text-sm transition-colors duration-200"
+                  style={inputStyle}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+              </Field>
+
+              <Field label="Message">
+                <textarea
+                  name="message"
+                  required
+                  rows={5}
+                  placeholder="What's on your mind?"
+                  className="px-4 py-3 text-sm resize-none transition-colors duration-200"
+                  style={inputStyle}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+              </Field>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-3 text-sm font-medium rounded-sm transition-opacity duration-200 disabled:opacity-50"
+                style={{ backgroundColor: 'var(--gold)', color: '#000' }}
+                onMouseEnter={e => { if (!isSubmitting) e.currentTarget.style.opacity = '0.88'; }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; }}
+              >
+                {isSubmitting ? 'Sending…' : 'Send Message'}
               </button>
+
               {status.message && (
-                <p className={`text-center text-sm mt-3 font-medium ${status.type === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                <p
+                  className="text-center text-sm font-medium"
+                  style={{ color: status.type === 'success' ? 'var(--gold)' : '#f87171' }}
+                >
                   {status.message}
                 </p>
               )}
             </form>
           </motion.div>
-        </motion.div>
+
+        </div>
       </div>
     </section>
   );

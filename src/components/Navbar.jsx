@@ -12,6 +12,37 @@ const navLinks = [
   { label: 'Contact', path: '/', hash: '#contact' },
 ];
 
+function NavLink({ link, active, onClick }) {
+  return (
+    <span className="relative group">
+      <Link
+        to={link.hash ? '/#contact' : link.path}
+        onClick={onClick}
+        style={{
+          color: active ? 'var(--gold)' : 'var(--text-muted)',
+          transition: 'color 0.2s ease',
+          fontSize: '0.875rem',
+          fontWeight: 500,
+          letterSpacing: '0.02em',
+        }}
+        onMouseEnter={e => { if (!active) e.currentTarget.style.color = 'var(--gold)'; }}
+        onMouseLeave={e => { if (!active) e.currentTarget.style.color = 'var(--text-muted)'; }}
+      >
+        {link.label}
+      </Link>
+      {/* gold underline reveal */}
+      <span
+        className="absolute left-0 -bottom-0.5 h-px w-full origin-left"
+        style={{
+          backgroundColor: 'var(--gold)',
+          transform: active ? 'scaleX(1)' : 'scaleX(0)',
+          transition: 'transform 0.25s ease',
+        }}
+      />
+    </span>
+  );
+}
+
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -39,68 +70,70 @@ function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="sticky top-0 z-50 w-full bg-[#212529] border-b border-[#495057]"
+      className="sticky top-0 z-50 w-full"
+      style={{ backgroundColor: 'var(--bg)', borderBottom: '1px solid var(--border)' }}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="transition-opacity hover:opacity-80">
-          <span style={{ fontFamily: 'Georgia, serif' }} className="text-2xl font-bold tracking-widest text-[#c9a84c]">Rohit</span>
+
+        {/* Logo */}
+        <Link to="/" className="hover:opacity-80 transition-opacity">
+          <span style={{
+            fontFamily: 'Georgia, serif',
+            color: 'var(--gold)',
+            fontWeight: 'bold',
+            letterSpacing: '0.1em',
+            fontSize: '1.25rem',
+          }}>
+            Rohit
+          </span>
         </Link>
 
+        {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => {
-            const active = isActive(link);
-            if (link.hash) {
-              return (
-                <li key={link.label}>
-                  <Link
-                    to="/#contact"
-                    onClick={handleContactClick}
-                    className="text-sm font-medium text-[#adb5bd] hover:text-[#5b8fa8] transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            }
-            return (
-              <li key={link.label}>
-                <Link
-                  to={link.path}
-                  className={`text-sm font-medium transition-colors duration-300 ${
-                    active
-                      ? 'text-[#5b8fa8] border-b-2 border-[#5b8fa8] pb-1'
-                      : 'text-[#adb5bd] hover:text-[#5b8fa8]'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <NavLink
+                link={link}
+                active={isActive(link)}
+                onClick={link.hash ? handleContactClick : undefined}
+              />
+            </li>
+          ))}
         </ul>
 
+        {/* Resume button (desktop) */}
         <div className="hidden md:flex items-center gap-4">
           <a
             href="https://assets.rajrohit.tech/resume/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-[#5b8fa8] text-[#5b8fa8] px-4 py-2 rounded-lg hover:bg-[#5b8fa8] hover:text-[#212529] transition-all text-sm font-semibold"
+            className="rounded-sm px-4 py-1.5 text-sm font-medium transition-all duration-200"
+            style={{
+              border: '1px solid var(--gold)',
+              color: 'var(--gold)',
+              backgroundColor: 'transparent',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--gold-glow)'; }}
+            onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; }}
           >
             Resume
           </a>
         </div>
 
+        {/* Mobile hamburger */}
         <button
           type="button"
-          className="md:hidden text-[#5b8fa8]"
+          className="md:hidden"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((open) => !open)}
+          style={{ color: 'var(--gold)' }}
         >
-          {mobileOpen ? <LuX size={28} /> : <LuMenu size={28} />}
+          {mobileOpen ? <LuX size={26} /> : <LuMenu size={26} />}
         </button>
       </div>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -108,46 +141,53 @@ function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden md:hidden bg-[#212529] border-t border-[#495057]"
+            className="overflow-hidden md:hidden"
+            style={{ backgroundColor: 'var(--surface)', borderTop: '1px solid var(--border)' }}
           >
             <ul className="flex flex-col gap-1 px-6 py-4">
               {navLinks.map((link) => {
                 const active = isActive(link);
-                if (link.hash) {
-                  return (
-                    <li key={link.label}>
-                      <Link
-                        to="/#contact"
-                        onClick={handleContactClick}
-                        className="block rounded-md px-4 py-3 text-base font-medium text-[#adb5bd] hover:bg-[#343a40] hover:text-[#5b8fa8] transition-colors duration-300"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  );
-                }
                 return (
                   <li key={link.label}>
                     <Link
-                      to={link.path}
-                      onClick={() => setMobileOpen(false)}
-                      className={`block rounded-md px-4 py-3 text-base font-medium transition-colors duration-300 ${
-                        active
-                          ? 'bg-[#5b8fa8]/10 text-[#5b8fa8]'
-                          : 'text-[#adb5bd] hover:bg-[#343a40] hover:text-[#5b8fa8]'
-                      }`}
+                      to={link.hash ? '/#contact' : link.path}
+                      onClick={link.hash ? handleContactClick : () => setMobileOpen(false)}
+                      className="block rounded px-4 py-3 text-base font-medium transition-colors duration-200"
+                      style={{
+                        color: active ? 'var(--gold)' : 'var(--text-muted)',
+                        backgroundColor: active ? 'var(--gold-glow)' : 'transparent',
+                      }}
+                      onMouseEnter={e => {
+                        if (!active) {
+                          e.currentTarget.style.color = 'var(--gold)';
+                          e.currentTarget.style.backgroundColor = 'var(--gold-glow)';
+                        }
+                      }}
+                      onMouseLeave={e => {
+                        if (!active) {
+                          e.currentTarget.style.color = 'var(--text-muted)';
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                        }
+                      }}
                     >
                       {link.label}
                     </Link>
                   </li>
                 );
               })}
-              <li className="pt-4 mt-2 border-t border-[#495057]">
+              <li className="pt-4 mt-2" style={{ borderTop: '1px solid var(--border)' }}>
                 <a
                   href="https://assets.rajrohit.tech/resume/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center rounded-md border border-[#5b8fa8] px-5 py-3 text-sm font-semibold text-[#5b8fa8] transition-all duration-300 hover:bg-[#5b8fa8] hover:text-[#212529]"
+                  className="block text-center rounded-sm px-5 py-3 text-sm font-medium transition-all duration-200"
+                  style={{
+                    border: '1px solid var(--gold)',
+                    color: 'var(--gold)',
+                    backgroundColor: 'transparent',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--gold-glow)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; }}
                 >
                   Resume
                 </a>

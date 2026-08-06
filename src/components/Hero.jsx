@@ -1,167 +1,156 @@
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaXTwitter, FaInstagram, FaArrowDown } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import { ArrowDownToLine } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
-const taglines = [
-  'BCA Student at BIT Mesra',
-  'B.Sc. Data Science @ IIT Madras',
-  'Full Stack Developer',
-  'AI Product Builder',
-  'Open to Internships',
-];
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: 'easeOut', delay },
+});
 
-const socialLinks = [
+const socials = [
   { icon: FaGithub, href: 'https://github.com/rohitraj-dev', label: 'GitHub' },
   { icon: FaLinkedin, href: 'https://www.linkedin.com/in/rohitraj-dev/', label: 'LinkedIn' },
   { icon: FaXTwitter, href: 'https://x.com/rajrohit_7388', label: 'Twitter/X' },
-  { icon: FaInstagram, href: 'https://www.instagram.com/r.a.j_rohit/', label: 'Instagram' },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-};
-
-function Hero() {
-  const [textIndex, setTextIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const typingSpeed = isDeleting ? 50 : 100;
-    const currentFullText = taglines[textIndex];
-
-    const timer = setTimeout(() => {
-      if (!isDeleting && currentText === currentFullText) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && currentText === '') {
-        setIsDeleting(false);
-        setTextIndex((prev) => (prev + 1) % taglines.length);
-      } else {
-        setCurrentText(
-          currentFullText.substring(0, currentText.length + (isDeleting ? -1 : 1))
-        );
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [currentText, isDeleting, textIndex]);
+export default function Hero() {
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#212529]" id="home">
-      {/* Subtle dot pattern background */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(#f8f9fa 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-        }}
-      />
+    <section
+      id="hero"
+      className="min-h-screen flex items-center px-6 md:px-16"
+      style={{ backgroundColor: 'var(--bg)' }}
+    >
+      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center py-24 md:py-0">
 
-      {/* Content */}
-      <motion.div
-        className="max-w-3xl mx-auto px-4 md:px-8 lg:px-16 text-center z-10 relative"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.p
-          variants={itemVariants}
-          className="text-[#6c757d] text-sm tracking-widest uppercase mb-2"
-        >
-          👋 Hello, I&apos;m
-        </motion.p>
-        
-        <motion.h1
-          variants={itemVariants}
-          className="text-6xl md:text-7xl font-bold text-[#f8f9fa] mb-4"
-        >
-          Rohit Raj
-        </motion.h1>
+        {/* ── Left: Text ── */}
+        <div className="flex flex-col order-2 md:order-1">
 
-        <motion.div variants={itemVariants} className="h-8 md:h-10 mb-2">
-          <p className="text-[#5b8fa8] text-xl md:text-2xl font-semibold">
-            {currentText}
-            <span className="animate-pulse">|</span>
-          </p>
-        </motion.div>
+          {/* Greeting line + rule */}
+          <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-4">
+            <span
+              className="w-10 h-px"
+              style={{ backgroundColor: 'var(--gold)', display: 'inline-block' }}
+            />
+            <span
+              style={{
+                color: 'var(--gold)',
+                fontSize: '0.75rem',
+                letterSpacing: '0.2em',
+                fontVariant: 'small-caps',
+                fontWeight: 600,
+              }}
+            >
+              ROHIT RAJ
+            </span>
+          </motion.div>
 
-        <motion.p
-          variants={itemVariants}
-          className="text-[#adb5bd] mt-4 text-base md:text-lg"
-        >
-          Building AI-powered products from Deoghar, Jharkhand 🚀
-        </motion.p>
-
-        <motion.div
-          variants={itemVariants}
-          className="mt-8 gap-4 flex justify-center flex-wrap"
-        >
-          <Link
-            to="/projects"
-            className="bg-[#5b8fa8] text-[#212529] font-semibold px-6 py-3 rounded-lg hover:bg-[#5b8fa8] transition-all"
+          {/* Name heading */}
+          <motion.h1
+            {...fadeUp(0.1)}
+            className="font-display text-5xl md:text-7xl font-bold leading-tight mb-4"
+            style={{ color: 'var(--text)' }}
           >
-            View My Work
-          </Link>
-          <a
-            href="https://assets.rajrohit.tech/resume/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-[#5b8fa8] text-[#5b8fa8] px-6 py-3 rounded-lg hover:bg-[#5b8fa8] hover:text-[#212529] transition-all"
-          >
-            Download Resume
-          </a>
-        </motion.div>
+            Developer<br />
+            <span style={{ color: 'var(--gold)' }}>&amp;</span> Data Scientist
+          </motion.h1>
 
-        <motion.div
-          variants={itemVariants}
-          className="mt-6 flex justify-center gap-6"
-        >
-          {socialLinks.map(({ icon: Icon, href, label }) => (
+          {/* Tagline */}
+          <motion.p
+            {...fadeUp(0.2)}
+            className="text-lg md:text-xl mb-8 max-w-md"
+            style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}
+          >
+            Building intelligent systems.<br />One line at a time.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div {...fadeUp(0.3)} className="flex flex-wrap gap-3 mb-8">
+            {/* View Work */}
+            <button
+              onClick={() => scrollTo('projects')}
+              className="px-6 py-2.5 rounded-sm text-sm font-medium transition-all duration-200"
+              style={{ backgroundColor: '#c9a84c', color: '#0a0a0a' }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#d4b460'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#c9a84c'; }}
+            >
+              View Work
+            </button>
+
+            {/* Contact Me */}
+            <button
+              onClick={() => scrollTo('contact')}
+              className="px-6 py-2.5 rounded-sm text-sm font-medium transition-all duration-200"
+              style={{
+                border: '1px solid var(--gold)',
+                color: 'var(--gold)',
+                backgroundColor: 'transparent',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--gold-glow)'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; }}
+            >
+              Contact Me
+            </button>
+
+            {/* Resume */}
             <a
-              key={label}
-              href={href}
+              href="https://assets.rajrohit.tech/resume/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={label}
-              className="text-[#6c757d] hover:text-[#5b8fa8] transition-colors text-2xl"
+              download
+              className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors duration-200"
+              style={{ color: 'var(--text-muted)' }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--gold)'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; }}
             >
-              <Icon />
+              <ArrowDownToLine size={15} />
+              Resume
             </a>
-          ))}
-        </motion.div>
-      </motion.div>
+          </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-      >
-        <span className="text-[#6c757d] text-xs tracking-widest uppercase">Scroll</span>
+          {/* Social icons */}
+          <motion.div {...fadeUp(0.4)} className="flex items-center gap-5">
+            {socials.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="transition-colors duration-200"
+                style={{ color: 'var(--text-muted)' }}
+                onMouseEnter={e => { e.currentTarget.style.color = 'var(--gold)'; }}
+                onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; }}
+              >
+                <Icon size={20} />
+              </a>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* ── Right: Photo ── */}
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
+          className="flex justify-center items-end order-1 md:order-2"
         >
-          <FaArrowDown className="text-[#5b8fa8]" />
+          <img
+            src="https://assets.rajrohit.tech/photos/photo_no-back.png"
+            alt="Rohit Raj"
+            className="w-64 md:w-80 lg:w-96 object-contain select-none"
+            style={{
+              filter: 'drop-shadow(0 0 32px rgba(201,168,76,0.18))',
+            }}
+          />
         </motion.div>
-      </motion.div>
+
+      </div>
     </section>
   );
 }
-
-export default Hero;
