@@ -1,6 +1,9 @@
+import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownToLine } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
+
+const HeroCanvas = lazy(() => import('./HeroCanvas'));
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -26,10 +29,10 @@ export default function Hero() {
       className="min-h-screen flex items-center px-6 md:px-16"
       style={{ backgroundColor: 'var(--bg)' }}
     >
-      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center py-24 md:py-0">
+      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center py-24 lg:py-0">
 
         {/* ── Left: Text ── */}
-        <div className="flex flex-col order-2 md:order-1">
+        <div className="flex flex-col order-2 lg:order-1">
 
           {/* Greeting line + rule */}
           <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-4">
@@ -133,21 +136,16 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* ── Right: Photo ── */}
+        {/* ── Right: 3D Canvas ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
-          className="flex justify-center items-end order-1 md:order-2"
+          transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
+          className="hidden lg:flex justify-center items-center order-1 lg:order-2 h-[420px] w-full pointer-events-none"
         >
-          <img
-            src="https://assets.rajrohit.tech/photos/photo_no-back.png"
-            alt="Rohit Raj"
-            className="w-64 md:w-80 lg:w-96 object-contain select-none"
-            style={{
-              filter: 'drop-shadow(0 0 32px rgba(201,168,76,0.18))',
-            }}
-          />
+          <Suspense fallback={null}>
+            <HeroCanvas />
+          </Suspense>
         </motion.div>
 
       </div>
