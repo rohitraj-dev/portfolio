@@ -1,8 +1,6 @@
-import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { skills } from '../data/skills';
-
-const SkillsGlobe = lazy(() => import('./SkillsGlobe'));
+import SkillsGlobe from './SkillsGlobe';
 
 const containerVariants = {
   hidden: {},
@@ -62,9 +60,7 @@ export default function Skills() {
 
         {/* Globe — lg and above only */}
         <div className="hidden lg:block h-[340px] w-full mb-12">
-          <Suspense fallback={null}>
-            <SkillsGlobe />
-          </Suspense>
+          <SkillsGlobe />
         </div>
 
         {/* Cards grid */}
