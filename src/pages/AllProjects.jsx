@@ -33,10 +33,10 @@ export default function AllProjects() {
 
   return (
     <div
-      className="min-h-screen py-20 px-6 md:px-16"
+      className="flex flex-col min-h-screen pt-20 px-6 md:px-16"
       style={{ backgroundColor: 'var(--bg)', color: 'var(--text)' }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full flex-1">
 
         {/* Back link */}
         <div className="mb-14">

@@ -54,8 +54,8 @@ function SectionLabel({ text }) {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen py-20 px-6 md:px-16" style={{ backgroundColor: 'var(--bg)', color: 'var(--text)' }}>
-      <div className="max-w-5xl mx-auto">
+    <div className="flex flex-col min-h-screen pt-20 px-6 md:px-16" style={{ backgroundColor: 'var(--bg)', color: 'var(--text)' }}>
+      <div className="max-w-5xl mx-auto w-full flex-1">
 
         {/* Back link */}
         <div className="mb-14">
