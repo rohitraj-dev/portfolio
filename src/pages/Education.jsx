@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import timeline from '../data/timeline';
+import Footer from '../components/Footer';
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -161,6 +162,7 @@ export default function Education() {
         </motion.div>
 
       </div>
+      <Footer />
     </div>
   );
 }

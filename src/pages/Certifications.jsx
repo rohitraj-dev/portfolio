@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Award } from 'lucide-react';
 import { certifications } from '../data/certifications';
+import Footer from '../components/Footer';
 
 const TABS = ['All', 'Cisco', 'IBM', 'Forage', 'SAP', 'CS50'];
 
@@ -210,6 +211,7 @@ export default function CertificationsPage() {
         )}
 
       </div>
+      <Footer />
     </div>
   );
 }

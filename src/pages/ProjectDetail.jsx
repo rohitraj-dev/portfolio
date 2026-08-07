@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ExternalLink, ArrowLeft } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
 import projects from '../data/projects';
+import Footer from '../components/Footer';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -281,6 +282,7 @@ export default function ProjectDetail() {
         )}
 
       </div>
+      <Footer />
     </div>
   );
 }

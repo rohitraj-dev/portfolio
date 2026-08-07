@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Download } from 'lucide-react';
 import { FaGithub, FaLinkedinIn, FaXTwitter, FaInstagram } from 'react-icons/fa6';
 import { skills } from '../data/skills';
+import Footer from '../components/Footer';
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -246,6 +247,7 @@ export default function AboutPage() {
         </motion.section>
 
       </div>
+      <Footer />
     </div>
   );
 }
