@@ -211,6 +211,7 @@ export default function CertificationsPage() {
         )}
 
       </div>
+      <div className="h-16" />
       <Footer />
     </div>
   );

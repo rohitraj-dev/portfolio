@@ -247,6 +247,7 @@ export default function AboutPage() {
         </motion.section>
 
       </div>
+      <div className="h-16" />
       <Footer />
     </div>
   );

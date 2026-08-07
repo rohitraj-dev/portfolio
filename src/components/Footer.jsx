@@ -13,7 +13,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="py-10 px-6 md:px-16"
+      className="mt-16 pt-10 pb-8 px-6 md:px-16"
       style={{
         backgroundColor: 'var(--bg)',
         borderTop: '1px solid var(--border)',

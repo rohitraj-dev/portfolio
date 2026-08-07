@@ -282,6 +282,7 @@ export default function ProjectDetail() {
         )}
 
       </div>
+      <div className="h-16" />
       <Footer />
     </div>
   );

@@ -9,6 +9,7 @@ function Home() {
       <Navbar />
       <Hero />
       <Contact />
+      <div className="h-16" />
       <Footer />
     </main>
   )

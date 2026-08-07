@@ -162,6 +162,7 @@ export default function Education() {
         </motion.div>
 
       </div>
+      <div className="h-16" />
       <Footer />
     </div>
   );

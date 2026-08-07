@@ -163,6 +163,7 @@ export default function AllProjects() {
         </AnimatePresence>
 
       </div>
+      <div className="h-16" />
       <Footer />
     </div>
   );
