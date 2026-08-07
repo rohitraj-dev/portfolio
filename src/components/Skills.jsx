@@ -1,5 +1,8 @@
+import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { skills } from '../data/skills';
+
+const SkillsGlobe = lazy(() => import('./SkillsGlobe'));
 
 const containerVariants = {
   hidden: {},
@@ -51,11 +54,18 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.08 }}
-          className="font-display text-3xl md:text-4xl font-bold mb-12"
+          className="font-display text-3xl md:text-4xl font-bold"
           style={{ color: 'var(--text)' }}
         >
           Technologies &amp; Tools
         </motion.h2>
+
+        {/* Globe — lg and above only */}
+        <div className="hidden lg:block h-[340px] w-full mb-12">
+          <Suspense fallback={null}>
+            <SkillsGlobe />
+          </Suspense>
+        </div>
 
         {/* Cards grid */}
         <motion.div
