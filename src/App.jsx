@@ -5,10 +5,12 @@ import AllProjects from './pages/AllProjects'
 import Certifications from './pages/Certifications'
 import Education from './pages/Education'
 import AboutPage from './pages/About'
+import CursorGlow from './components/CursorGlow'
 
 function App() {
   return (
     <BrowserRouter>
+      <CursorGlow />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
