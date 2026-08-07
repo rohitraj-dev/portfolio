@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Text } from '@react-three/drei';
+import { Html } from '@react-three/drei';
 
 const skills = [
   "Python", "React", "TypeScript", "FastAPI", "Node.js",
@@ -11,22 +11,18 @@ const skills = [
 
 const RADIUS = 2.2;
 
-// Fibonacci sphere algorithm to distribute points evenly on a sphere
 function fibonacciSphere(count, radius) {
   const points = [];
   const goldenRatio = (1 + Math.sqrt(5)) / 2;
-
   for (let i = 0; i < count; i++) {
     const theta = Math.acos(1 - (2 * (i + 0.5)) / count);
     const phi = (2 * Math.PI * i) / goldenRatio;
-
-    const x = radius * Math.sin(theta) * Math.cos(phi);
-    const y = radius * Math.sin(theta) * Math.sin(phi);
-    const z = radius * Math.cos(theta);
-
-    points.push([x, y, z]);
+    points.push([
+      radius * Math.sin(theta) * Math.cos(phi),
+      radius * Math.sin(theta) * Math.sin(phi),
+      radius * Math.cos(theta),
+    ]);
   }
-
   return points;
 }
 
@@ -45,16 +41,24 @@ function WordCloud() {
   return (
     <group ref={groupRef}>
       {skills.map((skill, i) => (
-        <Text
+        <Html
           key={skill}
           position={positions[i]}
-          fontSize={0.18}
-          color="#c9a84c"
-          anchorX="center"
-          anchorY="middle"
+          center
+          style={{
+            color: '#c9a84c',
+            fontSize: '11px',
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 500,
+            letterSpacing: '0.05em',
+            whiteSpace: 'nowrap',
+            pointerEvents: 'none',
+            userSelect: 'none',
+            textShadow: '0 0 8px rgba(201,168,76,0.4)',
+          }}
         >
           {skill}
-        </Text>
+        </Html>
       ))}
     </group>
   );
@@ -65,9 +69,9 @@ export default function SkillsGlobe() {
     <Canvas
       style={{ width: '100%', height: '100%', background: 'transparent' }}
       gl={{ alpha: true }}
-      camera={{ position: [0, 0, 5], fov: 50 }}
+      camera={{ position: [0, 0, 5.5], fov: 50 }}
     >
-      <ambientLight intensity={0.8} />
+      <ambientLight intensity={1} />
       <WordCloud />
     </Canvas>
   );
